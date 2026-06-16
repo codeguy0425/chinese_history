@@ -12,6 +12,8 @@ const URLS = [
   '2526期終考試溫習範圍.pdf',
   'study.md',
   'icon.svg',
+  'icon-192.png',
+  'icon-512.png',
   'manifest.json'
 ];
 
