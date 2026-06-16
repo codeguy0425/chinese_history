@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中一中史 — 作業溫習</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;900&family=Noto+Serif+SC:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans SC', system-ui, sans-serif;
+    background: #e8e4da;
+    color: #1a1a2e;
+    padding: 30px 16px;
+    line-height: 1.8;
+  }
+  .paper {
+    max-width: 860px;
+    margin: 0 auto;
+    background: #f8f6f0;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    padding: 40px 48px;
+  }
+  @media (max-width: 600px) { .paper { padding: 20px 14px; } }
+
+  .header {
+    text-align: center;
+    border-bottom: 3px double #b8860b;
+    padding-bottom: 18px;
+    margin-bottom: 30px;
+  }
+  .header h1 {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: #1a1a2e;
+  }
+  .header .sub {
+    font-size: 13px;
+    color: #6b7280;
+    margin-top: 4px;
+  }
+
+  /* Unit section */
+  .unit {
+    margin-bottom: 36px;
+  }
+  .unit-title {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #8b6914;
+    border-left: 4px solid #b8860b;
+    padding-left: 14px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .unit-title .tag {
+    font-size: 11px;
+    font-weight: 600;
+    background: #f0e6c8;
+    color: #8b6914;
+    padding: 2px 10px;
+    border-radius: 4px;
+  }
+
+  /* Workbook card */
+  .wb {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.04);
+    margin-bottom: 18px;
+    overflow: hidden;
+  }
+  .wb-header {
+    padding: 14px 20px;
+    background: #faf8f4;
+    border-bottom: 1px solid #efece4;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .wb-header .num {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-weight: 900;
+    font-size: 15px;
+    color: #b8860b;
+    min-width: 24px;
+  }
+  .wb-header .src {
+    font-size: 11px;
+    font-weight: 600;
+    color: #6b7280;
+    background: #e8e4da;
+    padding: 1px 8px;
+    border-radius: 3px;
+  }
+
+  .wb-body { padding: 16px 20px 20px; }
+
+  .wb-body .q {
+    font-size: 15px;
+    padding: 10px 14px;
+    background: #faf8f4;
+    border-radius: 6px;
+    border-left: 3px solid #d97706;
+    margin-bottom: 12px;
+  }
+  .wb-body .q strong { color: #b45309; }
+
+  /* Answer area */
+  .ans-box { margin-top: 10px; }
+  .ans-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2e7d32;
+    cursor: pointer;
+    padding: 4px 14px;
+    border-radius: 4px;
+    background: #e8f5e9;
+    border: none;
+    font-family: inherit;
+    transition: background 0.15s;
+  }
+  .ans-toggle:hover { background: #c8e6c9; }
+  .ans-toggle .arrow { transition: transform 0.2s; display: inline-block; }
+  .ans-toggle.open .arrow { transform: rotate(90deg); }
+
+  .ans-content {
+    display: none;
+    margin-top: 8px;
+    padding: 12px 16px;
+    background: #f1f8e9;
+    border-radius: 6px;
+    border-left: 3px solid #2e7d32;
+    font-size: 14.5px;
+    color: #1b5e20;
+    line-height: 1.9;
+  }
+  .ans-content.open { display: block; }
+  .ans-content .label { font-weight: 700; color: #2e7d32; display: block; margin-bottom: 4px; }
+  .ans-content ul { padding-left: 18px; margin-top: 4px; }
+  .ans-content ul li { margin-bottom: 3px; }
+  .ans-content .highlight {
+    background: #fff8e1;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-weight: 600;
+    color: #b45309;
+  }
+
+  /* Key terms box */
+  .terms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #d1d5db;
+  }
+  .terms .pill {
+    font-size: 12px;
+    padding: 2px 10px;
+    border-radius: 12px;
+    background: #f0e6c8;
+    color: #8b6914;
+    font-weight: 600;
+  }
+  .terms .label { font-size: 12px; color: #6b7280; font-weight: 600; margin-right: 4px; }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 92vw;
+    max-height: 92vh;
+    border-radius: 8px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .map-thumb {
+    cursor: zoom-in;
+    transition: opacity 0.15s;
+  }
+  .map-thumb:hover { opacity: 0.85; }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .paper { box-shadow: none; padding: 20px; }
+    .ans-content { display: block !important; }
+    .ans-toggle { display: none !important; }
+    .wb { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="paper">
+
+  <div class="header">
+    <h1>中一級中國歷史科<br>作業溫習</h1>
+    <div class="sub">根據作業 P.36、P.41 問答題編寫</div>
+  </div>
+
+  <!-- ============ P.36 ============ -->
+  <div class="unit">
+    <div class="unit-title">
+      單元二：秦漢 — 兩漢通西域與中外文化交流
+      <span class="tag">作業 P.36 問答題</span>
+    </div>
+
+    <div class="wb">
+      <div class="wb-header">
+        <span class="num">1</span>
+        <span class="src">作業 P.36</span>
+      </div>
+      <div class="wb-body">
+        <div class="q">
+          兩漢通西域後，促進了中外文化交流。試從 <strong>「中國文明西傳」</strong> 與 <strong>「西域文化東來」</strong> 兩方面，分析兩漢通西域的影響。
+        </div>
+
+        <div class="ans-box">
+          <button class="ans-toggle" onclick="toggle(this)">
+            <span class="arrow">▶</span> 顯示答案
+          </button>
+          <div class="ans-content">
+            <span class="label">建議答案</span>
+
+            <strong>中國文明西傳：</strong>
+            <ul>
+              <li>自張騫、班超出使西域，中國的 <span class="highlight">物產</span> 得以運銷西方諸國，其中以 <span class="highlight">絲綢</span> 數量最多、最受歡迎，是中國對外貿易中非常重要的商品。</li>
+              <li>中國的 <span class="highlight">鑿井技術、鑄鐵技術</span> 等經絲綢之路傳入西方，有助改善當地人的生活水平。</li>
+            </ul>
+
+            <strong>西域文化東來：</strong>
+            <ul>
+              <li>西方的 <span class="highlight">物產</span> 和文化，如駱駝、汗血馬、葡萄，以及西域的音樂、舞蹈等，經絲綢之路傳入中國，豐富了中國人的物質和精神生活。</li>
+              <li>許多西域國家信奉的 <span class="highlight">佛教</span>，也經絲綢之路於兩漢時期傳入中國，對中國文化影響甚大。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="terms">
+          <span class="label">關鍵詞：</span>
+          <span class="pill">絲綢</span>
+          <span class="pill">鑿井技術</span>
+          <span class="pill">鑄鐵技術</span>
+          <span class="pill">汗血馬</span>
+          <span class="pill">佛教</span>
+          <span class="pill">絲綢之路</span>
+          <span class="pill">張騫</span>
+          <span class="pill">班超</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ P.41 ============ -->
+  <div class="unit">
+    <div class="unit-title">
+      單元三：三國、兩晉、南北朝 — 赤壁之戰
+      <span class="tag">作業 P.41</span>
+    </div>
+
+    <div class="wb">
+      <div class="wb-header">
+        <span class="num">2</span>
+        <span class="src">作業 P.41</span>
+      </div>
+      <div class="wb-body">
+        <div class="q">
+          試分析 <strong>赤壁之戰</strong> 對當時天下政局的影響。
+        </div>
+
+        <div class="ans-box">
+          <button class="ans-toggle" onclick="toggle(this)">
+            <span class="arrow">▶</span> 顯示答案
+          </button>
+          <div class="ans-content">
+            <span class="label">建議答案</span>
+
+            <p>赤壁之戰（208 年）對當時天下的政局產生了決定性的影響：</p>
+            <ul>
+              <li><strong>曹操：</strong>實力受挫，再無力南下，只能鞏固他在 <span class="highlight">北方</span> 的勢力範圍。</li>
+              <li><strong>孫權：</strong>繼續據守 <span class="highlight">江東</span>，勢力更加穩固。</li>
+              <li><strong>劉備：</strong>乘機佔據 <span class="highlight">荊州</span>，後來又取得 <span class="highlight">益州</span> 和漢中。</li>
+            </ul>
+            <p style="margin-top:6px;">自此，<span class="highlight">魏、蜀、吳</span> 三國鼎立的局面正式形成。</p>
+          </div>
+        </div>
+
+        <div class="terms">
+          <span class="label">關鍵詞：</span>
+          <span class="pill">赤壁之戰</span>
+          <span class="pill">曹操</span>
+          <span class="pill">孫權</span>
+          <span class="pill">劉備</span>
+          <span class="pill">荊州</span>
+          <span class="pill">益州</span>
+          <span class="pill">三國鼎立</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ P.47 ============ -->
+  <div class="unit">
+    <div class="unit-title">
+      單元三：三國、兩晉、南北朝 — 孝文帝漢化措施
+      <span class="tag">作業 P.47 填表</span>
+    </div>
+
+    <div class="wb">
+      <div class="wb-header">
+        <span class="num">3</span>
+        <span class="src">作業 P.47 填表</span>
+      </div>
+      <div class="wb-body">
+        <div class="q">
+          以下是孝文帝的漢化措施。先把表格中的橫線填上正確答案，再把代表正確措施的英文字母（A–G）填寫在適當位置。
+          <div style="margin-top:6px;font-size:13px;color:#6b7280;">A 推薦文教　B 禁胡語　C 尊崇儒學　D 倡通婚　E 禁歸葬　F 改姓氏　G 禁胡服</div>
+        </div>
+
+        <div class="ans-box">
+          <button class="ans-toggle" onclick="toggle(this)">
+            <span class="arrow">▶</span> 顯示答案
+          </button>
+          <div class="ans-content">
+            <span class="label">建議答案</span>
+
+            <table style="width:100%;border-collapse:collapse;font-size:14px;margin-top:4px;">
+              <tr style="background:#e8e4da;font-weight:700;">
+                <td style="padding:6px 10px;border:1px solid #d1d5db;width:70px;">範疇</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;width:100px;">代號</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">措施內容</td>
+              </tr>
+              <tr style="background:#f1f8e9;">
+                <td style="padding:6px 10px;border:1px solid #d1d5db;font-weight:700;" rowspan="2">文化方面</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;text-align:center;font-weight:700;">C 尊崇儒學</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">孝文帝曾親自祭祀 <span class="highlight">孔子</span>，任用儒生；又設 <span class="highlight">五經博士</span>，教授生徒。他還提倡尊老、養老，鼓勵民眾遵從 <span class="highlight">儒家</span> 的道德規範。</td>
+              </tr>
+              <tr style="background:#f1f8e9;">
+                <td style="padding:6px 10px;border:1px solid #d1d5db;text-align:center;font-weight:700;">A 推薦文教</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">在洛陽設立 <span class="highlight">國子學、太學</span> 等學校，讓鮮卑的 <span class="highlight">貴族子弟</span> 能接受 <span class="highlight">漢化</span> 教育。</td>
+              </tr>
+              <tr style="background:#fff8e1;">
+                <td style="padding:6px 10px;border:1px solid #d1d5db;font-weight:700;" rowspan="5">風俗方面</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;text-align:center;font-weight:700;">B 禁胡語</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">下令 <span class="highlight">三十</span> 歲以下的鮮卑人須改說 <span class="highlight">漢語</span>，不許說鮮卑語，朝臣違令會被降職或罷免。</td>
+              </tr>
+              <tr style="background:#fff8e1;">
+                <td style="padding:6px 10px;border:1px solid #d1d5db;text-align:center;font-weight:700;">G 禁胡服</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">下令鮮卑人改穿 <span class="highlight">漢服</span>，禁止再穿鮮卑服飾，孝文帝更穿上 <span class="highlight">漢族</span> 君主的服裝，以示提倡。</td>
+              </tr>
+              <tr style="background:#fff8e1;">
+                <td style="padding:6px 10px;border:1px solid #d1d5db;text-align:center;font-weight:700;">F 改姓氏</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">禁止鮮卑族繼續使用鮮卑姓氏，改鮮卑姓氏為 <span class="highlight">漢姓</span>，例如皇室拓跋氏改為 <span class="highlight">元氏</span>。</td>
+              </tr>
+              <tr style="background:#fff8e1;">
+                <td style="padding:6px 10px;border:1px solid #d1d5db;text-align:center;font-weight:700;">E 禁歸葬</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">由北方遷往洛陽的鮮卑人須入籍 <span class="highlight">洛陽</span>，死後不可歸葬塞北原籍，必須葬於洛陽。這有助消除南遷鮮卑人的 <span class="highlight">鄉土意識</span>，加強他們對中原的歸屬感。</td>
+              </tr>
+              <tr style="background:#fff8e1;">
+                <td style="padding:6px 10px;border:1px solid #d1d5db;text-align:center;font-weight:700;">D 倡通婚</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">鼓勵鮮卑 <span class="highlight">貴族</span> 與漢人士族通婚。孝文帝娶了漢人主要士族的女子為妃嬪，又令皇族子弟娶漢人士族女子為妻。</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="terms">
+          <span class="label">關鍵詞：</span>
+          <span class="pill">尊崇儒學</span>
+          <span class="pill">禁胡語</span>
+          <span class="pill">禁胡服</span>
+          <span class="pill">改姓氏</span>
+          <span class="pill">禁歸葬</span>
+          <span class="pill">倡通婚</span>
+          <span class="pill">漢化</span>
+          <span class="pill">洛陽</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ P.48 ============ -->
+  <div class="unit">
+    <div class="unit-title">
+      單元三：三國、兩晉、南北朝 — 孝文帝漢化負面影響
+      <span class="tag">作業 P.48 問答題</span>
+    </div>
+
+    <div class="wb">
+      <div class="wb-header">
+        <span class="num">4</span>
+        <span class="src">作業 P.48 問答題</span>
+      </div>
+      <div class="wb-body">
+        <div class="q">
+          試從北魏統治方面，分析孝文帝漢化措施的 <strong>負面影響</strong>。
+        </div>
+
+        <div class="ans-box">
+          <button class="ans-toggle" onclick="toggle(this)">
+            <span class="arrow">▶</span> 顯示答案
+          </button>
+          <div class="ans-content">
+            <span class="label">建議答案</span>
+
+            <strong>鮮卑民族政治地位下降：</strong>
+            <ul>
+              <li>孝文帝推行漢化後，鮮卑族習染了漢人士族的 <span class="highlight">腐化風氣</span>，原有的勇悍民風日漸消失，變得文弱。</li>
+              <li>北魏的軍政大權逐漸落入 <span class="highlight">漢人</span> 手中，損害了鮮卑貴族的政治地位。</li>
+            </ul>
+
+            <strong>北魏貴族叛變：</strong>
+            <ul>
+              <li>不少保守鮮卑貴族反對漢化，孝文帝仍大力推行，導致部分貴族叛變。</li>
+              <li>亂事雖被平定，但已令北魏 <span class="highlight">內部分裂</span>。</li>
+            </ul>
+
+            <strong>北魏軍人叛變：</strong>
+            <ul>
+              <li>遷都洛陽後，留戍在北方的鮮卑軍人地位漸低，深感不滿。</li>
+              <li>終引致 <span class="highlight">六鎮之亂</span>，動搖北魏統治根基，導致其滅亡。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="terms">
+          <span class="label">關鍵詞：</span>
+          <span class="pill">腐化風氣</span>
+          <span class="pill">政治地位</span>
+          <span class="pill">貴族叛變</span>
+          <span class="pill">六鎮之亂</span>
+          <span class="pill">內部分裂</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ P.65 ============ -->
+  <div class="unit">
+    <div class="unit-title">
+      單元四：隋唐 — 隋代大運河
+      <span class="tag">作業 P.65 地圖</span>
+    </div>
+
+    <div class="wb">
+      <div class="wb-header">
+        <span class="num">5</span>
+        <span class="src">作業 P.65 運河地圖</span>
+      </div>
+      <div class="wb-body">
+        <div class="q">
+          <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start;">
+            <img src="pg65 map.jpeg" alt="隋代大運河地圖" class="map-thumb" onclick="document.getElementById('map-lightbox').classList.add('open')" style="max-width:200px;border-radius:6px;box-shadow:0 1px 6px rgba(0,0,0,0.1);flex-shrink:0;">
+            <div style="flex:1;min-width:200px;">
+              以下為隋代大運河各段的名稱及起訖點。請參考地圖，把代表正確答案的英文字母（A–E）與對應的運河名稱及起訖點配對。
+              <div style="margin-top:6px;font-size:13px;color:#6b7280;">A 廣通渠　B 永濟渠　C 通濟渠　D 邗溝　E 江南河</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ans-box">
+          <button class="ans-toggle" onclick="toggle(this)">
+            <span class="arrow">▶</span> 顯示答案
+          </button>
+          <div class="ans-content">
+            <span class="label">建議答案</span>
+
+            <table style="width:100%;border-collapse:collapse;font-size:14px;margin-top:4px;">
+              <tr style="background:#e8e4da;font-weight:700;">
+                <td style="padding:6px 10px;border:1px solid #d1d5db;width:50px;">代號</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;width:110px;">運河名稱</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;width:110px;">起點</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;width:110px;">訖點</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">連接水系</td>
+              </tr>
+              <tr style="background:#f1f8e9;">
+                <td style="padding:6px 10px;border:1px solid #d1d5db;text-align:center;font-weight:700;">A</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">廣通渠</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">大興（長安）</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">潼關</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">渭河 → 黃河</td>
+              </tr>
+              <tr style="background:#fff8e1;">
+                <td style="padding:6px 10px;border:1px solid #d1d5db;text-align:center;font-weight:700;">B</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">永濟渠</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">板渚</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">涿郡（北京）</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">黃河 → 海河</td>
+              </tr>
+              <tr style="background:#f1f8e9;">
+                <td style="padding:6px 10px;border:1px solid #d1d5db;text-align:center;font-weight:700;">C</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">通濟渠</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">洛陽</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">盱眙（淮河）</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">黃河 → 淮河</td>
+              </tr>
+              <tr style="background:#fff8e1;">
+                <td style="padding:6px 10px;border:1px solid #d1d5db;text-align:center;font-weight:700;">D</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">邗溝（山陽瀆）</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">山陽（淮安）</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">江都（揚州）</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">淮河 → 長江</td>
+              </tr>
+              <tr style="background:#f1f8e9;">
+                <td style="padding:6px 10px;border:1px solid #d1d5db;text-align:center;font-weight:700;">E</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">江南河</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">京口（鎮江）</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">餘杭（杭州）</td>
+                <td style="padding:6px 10px;border:1px solid #d1d5db;">長江 → 錢塘江</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="terms">
+          <span class="label">關鍵詞：</span>
+          <span class="pill">廣通渠</span>
+          <span class="pill">永濟渠</span>
+          <span class="pill">通濟渠</span>
+          <span class="pill">邗溝</span>
+          <span class="pill">江南河</span>
+          <span class="pill">洛陽</span>
+          <span class="pill">涿郡</span>
+          <span class="pill">餘杭</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ P.74 ============ -->
+  <div class="unit">
+    <div class="unit-title">
+      單元四：隋唐 — 安史之亂
+      <span class="tag">作業 P.74 問答題 3</span>
+    </div>
+
+    <div class="wb">
+      <div class="wb-header">
+        <span class="num">6</span>
+        <span class="src">作業 P.74 問答題 3</span>
+      </div>
+      <div class="wb-body">
+        <div class="q">
+          根據地圖，<strong>安史之亂</strong> 對哪些地區帶來較大破壞？這對唐代中後期的地區經濟發展有何影響？
+        </div>
+
+        <div class="ans-box">
+          <button class="ans-toggle" onclick="toggle(this)">
+            <span class="arrow">▶</span> 顯示答案
+          </button>
+          <div class="ans-content">
+            <span class="label">建議答案</span>
+            <ul>
+              <li>安史之亂對唐代 <span class="highlight">北方地區</span> 帶來較大破壞，亂事導致北方人口流散，經濟凋敝。</li>
+              <li>相反，<span class="highlight">長江以南地區</span> 未受戰火波及，大量百姓南下避亂。</li>
+              <li>加速了南方發展，使唐代中後期 <span class="highlight">經濟重心</span> 由北方移至南方。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="terms">
+          <span class="label">關鍵詞：</span>
+          <span class="pill">安史之亂</span>
+          <span class="pill">北方經濟凋敝</span>
+          <span class="pill">人口南遷</span>
+          <span class="pill">經濟重心南移</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ P.66 ============ -->
+  <div class="unit">
+    <div class="unit-title">
+      單元四：隋唐 — 大運河與中央集權
+      <span class="tag">作業 P.66 問答題</span>
+    </div>
+
+    <div class="wb">
+      <div class="wb-header">
+        <span class="num">7</span>
+        <span class="src">作業 P.66 問答題</span>
+      </div>
+      <div class="wb-body">
+        <div class="q">
+          隋朝開通大運河，如何有助中央控馭地方？試從 <strong>有助政令傳達</strong> 及 <strong>方便運兵輸糧</strong> 兩方面，加以分析。
+        </div>
+
+        <div class="ans-box">
+          <button class="ans-toggle" onclick="toggle(this)">
+            <span class="arrow">▶</span> 顯示答案
+          </button>
+          <div class="ans-content">
+            <span class="label">建議答案</span>
+            <strong>有助政令傳達：</strong>
+            <ul>
+              <li>隋朝大運河改善了南北交通，貫穿了全國多個地區，使位於關中地區的中央政府與各地的連繫更加強。</li>
+              <li>有助中央政府迅速傳遞 <span class="highlight">政令</span>，控馭地方，維持國家統一。</li>
+            </ul>
+            <strong>方便運兵輸糧：</strong>
+            <ul>
+              <li>大運河連繫了北方邊境和江南地區，方便中央朝廷 <span class="highlight">運兵輸糧</span>。</li>
+              <li>加強對地方和邊防的控制，鞏固政權。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="terms">
+          <span class="label">關鍵詞：</span>
+          <span class="pill">大運河</span>
+          <span class="pill">政令傳達</span>
+          <span class="pill">運兵輸糧</span>
+          <span class="pill">控馭地方</span>
+          <span class="pill">國家統一</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:20px;padding-top:16px;border-top:2px solid #efece4;font-size:13px;color:#6b7280;">
+    根據作業 P.36、P.41、P.47、P.48、P.65、P.66、P.74 內容整理
+  </div>
+
+</div>
+
+<div class="lightbox" id="map-lightbox" onclick="this.classList.remove('open')">
+  <img src="pg65 map.jpeg" alt="隋代大運河地圖">
+</div>
+
+<script>
+function toggle(btn) {
+  btn.classList.toggle('open');
+  var content = btn.nextElementSibling;
+  if (content && content.classList.contains('ans-content')) {
+    content.classList.toggle('open');
+    btn.innerHTML = content.classList.contains('open')
+      ? '<span class="arrow">▶</span> 隱藏答案'
+      : '<span class="arrow">▶</span> 顯示答案';
+  }
+}
+</script>
+
+</body>
+</html>
