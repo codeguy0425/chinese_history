@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中一中史 — 溫習打印版</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans SC', system-ui, sans-serif;
+    background: #fff;
+    color: #1a1a2e;
+    line-height: 1.8;
+    font-size: 11.5pt;
+    padding: 0;
+  }
+
+  .page {
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 15mm 18mm;
+  }
+
+  @page { margin: 15mm 18mm; }
+
+  /* Title */
+  .title {
+    text-align: center;
+    border-bottom: 2.5pt double #b8860b;
+    padding-bottom: 14pt;
+    margin-bottom: 18pt;
+  }
+  .title h1 {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 20pt;
+    font-weight: 900;
+    letter-spacing: 2pt;
+  }
+  .title .sub { font-size: 10pt; color: #6b7280; margin-top: 3pt; }
+
+  /* Unit */
+  .unit { margin-bottom: 20pt; }
+  .unit-header {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 13pt;
+    font-weight: 700;
+    color: #8b6914;
+    border-left: 3pt solid #b8860b;
+    padding-left: 10pt;
+    margin-bottom: 10pt;
+    display: flex;
+    align-items: center;
+    gap: 6pt;
+    flex-wrap: wrap;
+  }
+  .unit-header .tag {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 8.5pt;
+    font-weight: 600;
+    background: #f0e6c8;
+    color: #8b6914;
+    padding: 1pt 8pt;
+    border-radius: 3pt;
+  }
+
+  /* Entry */
+  .entry { margin-bottom: 14pt; }
+  .entry-header {
+    display: flex;
+    align-items: baseline;
+    gap: 6pt;
+    margin-bottom: 4pt;
+  }
+  .entry-header .num {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-weight: 900;
+    font-size: 11pt;
+    color: #b8860b;
+  }
+  .entry-header .src {
+    font-size: 8.5pt;
+    color: #6b7280;
+    background: #f0f0ec;
+    padding: 0 6pt;
+    border-radius: 3pt;
+  }
+
+  .q {
+    padding: 6pt 10pt;
+    background: #faf8f4;
+    border-left: 2pt solid #d97706;
+    font-size: 11pt;
+    margin-bottom: 6pt;
+  }
+  .q strong { color: #b45309; }
+
+  .a {
+    padding: 6pt 10pt;
+    background: #f1f8e9;
+    border-left: 2pt solid #2e7d32;
+    font-size: 10.5pt;
+    color: #1b5e20;
+    line-height: 1.9;
+  }
+  .a .alabel {
+    font-weight: 700;
+    color: #2e7d32;
+    display: block;
+    margin-bottom: 2pt;
+  }
+  .a ul { padding-left: 16pt; margin-top: 2pt; }
+  .a ul li { margin-bottom: 1pt; }
+  .a .hl {
+    background: #fff8e1;
+    padding: 0 4pt;
+    border-radius: 2pt;
+    font-weight: 600;
+    color: #b45309;
+  }
+
+  /* Table */
+  .a table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10pt;
+    margin-top: 4pt;
+  }
+  .a table td {
+    padding: 4pt 6pt;
+    border: 0.5pt solid #d1d5db;
+    vertical-align: top;
+  }
+  .a table .hdr { background: #e8e4da; font-weight: 700; }
+  .a table .alt1 { background: #f1f8e9; }
+  .a table .alt2 { background: #fff8e1; }
+
+  /* Map image in print */
+  .q img { display: none; }
+
+  /* Terms */
+  .terms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3pt;
+    margin-top: 5pt;
+    padding-top: 5pt;
+    border-top: 0.5pt dashed #d1d5db;
+  }
+  .terms .lbl { font-size: 8.5pt; color: #6b7280; font-weight: 600; margin-right: 2pt; }
+  .terms .pill {
+    font-size: 8.5pt;
+    padding: 1pt 7pt;
+    border-radius: 8pt;
+    background: #f0e6c8;
+    color: #8b6914;
+    font-weight: 600;
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 18pt;
+    padding-top: 10pt;
+    border-top: 1pt solid #efece4;
+    font-size: 9pt;
+    color: #6b7280;
+  }
+
+  .page-break { page-break-before: always; }
+
+  @media screen {
+    body { background: #e8e4da; padding: 20pt; }
+    .page { background: #fff; box-shadow: 0 2pt 12pt rgba(0,0,0,0.08); border-radius: 4pt; padding: 18mm 20mm; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="title">
+    <h1>中國歷史科 中一級<br>溫習打印版</h1>
+    <div class="sub">長題目 + 作業問答 · 全答案可見</div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 長題目 -->
+  <!-- ============================================================ -->
+
+  <div class="unit">
+    <div class="unit-header">單元二：秦漢 — 兩漢通西域 <span class="tag">長題目</span></div>
+
+    <div class="entry">
+      <div class="entry-header"><span class="num">1.</span><span class="src">通西域的原因</span></div>
+      <div class="q">試分析兩漢政府致力通西域的<strong>原因</strong>。從軍事、外交、經濟三方面論述。</div>
+      <div class="a">
+        <span class="alabel">建議答案</span>
+        <strong>（一）軍事原因：</strong>聯合西域各國夾擊匈奴，斷其右臂，解除北方邊患。<br>
+        <strong>（二）外交原因：</strong>宣揚漢朝國威，與西域各國建立政治聯繫，擴大漢朝在西北的影響力。<br>
+        <strong>（三）經濟原因：</strong>獲取西域的珍奇物產（如汗血馬、玉石、香料），並與西方進行貿易往來。
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header"><span class="num">2.</span><span class="src">通西域的影響</span></div>
+      <div class="q">兩漢通西域對中國的<strong>貿易</strong>、<strong>文化交流</strong>及<strong>民族往來</strong>帶來了什麼影響？</div>
+      <div class="a">
+        <span class="alabel">建議答案</span>
+        <strong>（一）貿易方面：</strong>絲綢之路開通，中國的絲綢、茶葉、漆器、鐵器等運往西方；西域的葡萄、胡桃、苜蓿、香料等傳入中國。<br>
+        <strong>（二）文化交流方面：</strong>佛教經西域傳入中國，西域的音樂、舞蹈、雜技也傳入中原。<br>
+        <strong>（三）民族往來方面：</strong>中原與西域各民族交往日趨頻繁，漢朝在西域設都護府，部分西域民族逐漸漢化。
+      </div>
+    </div>
+  </div>
+
+  <div class="unit">
+    <div class="unit-header">單元三：三國、兩晉、南北朝 <span class="tag">長題目</span></div>
+
+    <div class="entry">
+      <div class="entry-header"><span class="num">3.</span><span class="src">三國鼎立與覆亡</span></div>
+      <div class="q">試論述三國鼎立局面形成的<strong>經過</strong>，並分析三國最終<strong>覆亡</strong>的原因。</div>
+      <div class="a">
+        <span class="alabel">建議答案</span>
+        <strong>（一）三國鼎立的形成：</strong>東漢末年黃巾之亂後群雄割據→200年官渡之戰曹操統一北方→208年赤壁之戰孫劉敗曹操→220年曹丕建魏、221年劉備建蜀、229年孫權建吳。<br>
+        <strong>（二）三國覆亡：</strong>魏：司馬懿奪權，265年司馬炎篡魏。蜀：後主昏庸，263年被魏所滅。吳：孫皓暴虐，280年被晉所滅。
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header"><span class="num">4.</span><span class="src">北方政局演變</span></div>
+      <div class="q">魏晉南北朝時期北方政局經歷了怎樣的<strong>演變</strong>？從西晉滅亡到北魏統一北方加以說明。</div>
+      <div class="a">
+        <span class="alabel">建議答案</span>
+        280年晉滅吳統一→291年八王之亂→304年五胡亂華→316年西晉滅亡→439年北魏統一北方。北方從統一走向分裂，再從分裂走向北魏統一。
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header"><span class="num">5.</span><span class="src">孝文帝漢化措施與影響</span></div>
+      <div class="q">北魏孝文帝推行了哪些<strong>漢化措施</strong>？從政治、文化、社會三方面分析其<strong>影響</strong>。</div>
+      <div class="a">
+        <span class="alabel">建議答案</span>
+        <strong>措施：</strong>494年遷都洛陽、改漢服漢語、改漢姓、獎勵通婚。<br>
+        <strong>影響：</strong>政治方面—吸收漢族制度鞏固統治，但六鎮軍人不滿埋下分裂隱患；文化方面—促進民族文化交流；社會方面—加速民族融合，為隋唐大一統奠基。
+      </div>
+    </div>
+  </div>
+
+  <div class="unit">
+    <div class="unit-header">單元四：隋唐 <span class="tag">長題目</span></div>
+
+    <div class="entry">
+      <div class="entry-header"><span class="num">6.</span><span class="src">開皇之治措施</span></div>
+      <div class="q">隋文帝的「開皇之治」在政治、經濟、軍事三方面推行了哪些措施？</div>
+      <div class="a">
+        <span class="alabel">建議答案</span>
+        政治：三省六部制、廢九品中正、創科舉雛形、整頓吏治。經濟：均田制、減輕賦役、大索貌閱。軍事：改革府兵制、抵禦突厥。
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header"><span class="num">7.</span><span class="src">開皇之治作用</span></div>
+      <div class="q">開皇之治對隋朝的國家發展起到了怎樣的<strong>作用</strong>？</div>
+      <div class="a">
+        <span class="alabel">建議答案</span>
+        奠定統一基礎、促進經濟恢復（人口增長、糧倉充實）、完善國家制度（三省六部、科舉制）、積累社會財富為大規模建設提供財政支持。
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header"><span class="num">8.</span><span class="src">大運河開通</span></div>
+      <div class="q">隋煬帝開鑿大運河的<strong>背景</strong>是什麼？大運河由哪些河段組成？</div>
+      <div class="a">
+        <span class="alabel">建議答案</span>
+        背景：經濟重心南移、加強南方控制、方便運兵運糧。河段：永濟渠（洛陽→涿郡）、通濟渠（洛陽→盱眙）、山陽瀆（淮安→揚州）、江南河（鎮江→杭州）、廣通渠（長安→潼關）。
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header"><span class="num">9.</span><span class="src">大運河作用</span></div>
+      <div class="q">隋代大運河在經濟和政治上分別發揮了什麼作用？</div>
+      <div class="a">
+        <span class="alabel">建議答案</span>
+        經濟：溝通南北運輸、促進沿線城市繁榮、加強南北經濟聯繫。政治：加強中央對南方控制、方便軍隊調動、鞏固統一。長遠影響：成為南北交通大動脈，沿用至今（京杭大運河）。
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header"><span class="num">10.</span><span class="src">貞觀之治治績</span></div>
+      <div class="q">唐太宗貞觀年間有哪些重要的<strong>治績</strong>？從政治、經濟、文化、軍事四方面論述。</div>
+      <div class="a">
+        <span class="alabel">建議答案</span>
+        政治：虛心納諫、善用賢能、完善三省六部制。經濟：推行均田制、租庸調製、減輕賦役。文化：擴建國學、完善科舉制度。軍事：平定東突厥、被尊為「天可汗」。
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header"><span class="num">11.</span><span class="src">貞觀之治影響</span></div>
+      <div class="q">試分析貞觀之治對唐朝及後世的<strong>影響</strong>。</div>
+      <div class="a">
+        <span class="alabel">建議答案</span>
+        為開元盛世奠基、成為後世君主學習典範、均田制科舉制影響千年、唐朝國威遠播長安成國際都會。
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header"><span class="num">12.</span><span class="src">安史之亂背景與影響</span></div>
+      <div class="q">試分析安史之亂爆發的<strong>背景</strong>及對唐朝造成的<strong>影響</strong>。</div>
+      <div class="a">
+        <span class="alabel">建議答案</span>
+        背景：府兵制敗壞、節度使權力過大（安祿山兼三鎮）、中央政治腐敗（李林甫楊國忠）。影響：國力由盛轉衰、藩鎮割據、經濟重心南移。
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header"><span class="num">13.</span><span class="src">唐中葉後政局</span></div>
+      <div class="q">安史之亂平定後，唐中葉的政局出現了哪些<strong>主要問題</strong>？</div>
+      <div class="a">
+        <span class="alabel">建議答案</span>
+        藩鎮割據（節度使半獨立）、宦官專權（掌握禁軍）、黨爭激烈（牛李黨爭）、財政困難（北方經濟破壞）。
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header"><span class="num">14.</span><span class="src">唐朝衰亡原因</span></div>
+      <div class="q">綜合分析導致唐朝<strong>衰亡</strong>的各項原因。</div>
+      <div class="a">
+        <span class="alabel">建議答案</span>
+        藩鎮割據削弱中央、宦官亂政、牛李黨爭內耗、土地兼併均田制崩壞、黃巢之亂重創朝廷、907年朱溫篡唐。
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 作業題 -->
+  <!-- ============================================================ -->
+
+  <div class="page-break"></div>
+
+  <div class="title">
+    <h1>作業問答題</h1>
+    <div class="sub">P.36 · P.41 · P.47 · P.48 · P.63 · P.65 · P.66 · P.74</div>
+  </div>
+
+  <!-- P.36 -->
+  <div class="unit">
+    <div class="unit-header">單元二：秦漢 — 兩漢通西域 <span class="tag">P.36</span></div>
+    <div class="entry">
+      <div class="entry-header"><span class="num">1.</span><span class="src">P.36 問答題</span></div>
+      <div class="q">兩漢通西域後促進了中外文化交流。試從「中國文明西傳」與「西域文化東來」兩方面分析其影響。</div>
+      <div class="a">
+        <span class="alabel">建議答案</span>
+        <strong>中國文明西傳：</strong>張騫班超出使西域後，中國的物產運銷西方，以<span class="hl">絲綢</span>最多最受歡迎；中國的<span class="hl">鑿井技術、鑄鐵技術</span>經絲綢之路傳入西方。<br>
+        <strong>西域文化東來：</strong>駱駝、汗血馬、葡萄及西域音樂舞蹈傳入中國；<span class="hl">佛教</span>經絲綢之路於兩漢時期傳入中國，影響甚大。
+      </div>
+    </div>
+  </div>
+
+  <!-- P.41 -->
+  <div class="unit">
+    <div class="unit-header">單元三：三國、兩晉、南北朝 — 赤壁之戰 <span class="tag">P.41</span></div>
+    <div class="entry">
+      <div class="entry-header"><span class="num">2.</span><span class="src">P.41</span></div>
+      <div class="q">試分析<strong>赤壁之戰</strong>對當時天下政局的影響。</div>
+      <div class="a">
+        <span class="alabel">建議答案</span>
+        赤壁之戰（208年）後：曹操實力受挫，鞏固<span class="hl">北方</span>；孫權據守<span class="hl">江東</span>；劉備佔據<span class="hl">荊州</span>及<span class="hl">益州</span>。自此<span class="hl">魏、蜀、吳</span>三國鼎立局面形成。
+      </div>
+    </div>
+  </div>
+
+  <!-- P.47 -->
+  <div class="unit">
+    <div class="unit-header">單元三：孝文帝漢化措施 <span class="tag">P.47 填表</span></div>
+    <div class="entry">
+      <div class="entry-header"><span class="num">3.</span><span class="src">P.47 填表</span></div>
+      <div class="q">把孝文帝漢化措施的英文字母（A–G）填在對應位置。</div>
+      <div class="a">
+        <span class="alabel">建議答案</span>
+        <table>
+          <tr class="hdr"><td style="width:60pt">範疇</td><td style="width:80pt">代號</td><td>措施內容</td></tr>
+          <tr class="alt1"><td rowspan="2">文化方面</td><td>C 尊崇儒學</td><td>祭祀孔子，設五經博士，鼓勵遵從儒家道德規範</td></tr>
+          <tr class="alt1"><td>A 推薦文教</td><td>設立國子學、太學，讓鮮卑貴族子弟接受漢化教育</td></tr>
+          <tr class="alt2"><td rowspan="5">風俗方面</td><td>B 禁胡語</td><td>三十歲以下鮮卑人須改說漢語</td></tr>
+          <tr class="alt2"><td>G 禁胡服</td><td>下令鮮卑人改穿漢服</td></tr>
+          <tr class="alt2"><td>F 改姓氏</td><td>改鮮卑姓氏為漢姓（如拓跋改元）</td></tr>
+          <tr class="alt2"><td>E 禁歸葬</td><td>遷洛陽者須入籍洛陽，死後葬於洛陽</td></tr>
+          <tr class="alt2"><td>D 倡通婚</td><td>鼓勵鮮卑貴族與漢人士族通婚</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- P.48 -->
+  <div class="unit">
+    <div class="unit-header">單元三：孝文帝漢化負面影響 <span class="tag">P.48</span></div>
+    <div class="entry">
+      <div class="entry-header"><span class="num">4.</span><span class="src">P.48 問答題</span></div>
+      <div class="q">試從北魏統治方面，分析孝文帝漢化措施的<strong>負面影響</strong>。</div>
+      <div class="a">
+        <span class="alabel">建議答案</span>
+        <strong>鮮卑政治地位下降：</strong>習染漢人腐化風氣，軍政大權落入漢人之手。<br>
+        <strong>貴族叛變：</strong>保守貴族反對漢化，導致內部分裂。<br>
+        <strong>軍人叛變：</strong>北方戍守鮮卑軍人地位漸低，引發<span class="hl">六鎮之亂</span>，動搖北魏統治根基。
+      </div>
+    </div>
+  </div>
+
+  <!-- P.63 -->
+  <div class="unit">
+    <div class="unit-header">單元四：隋唐 — 開皇之治 <span class="tag">P.63</span></div>
+    <div class="entry">
+      <div class="entry-header"><span class="num">5.</span><span class="src">P.63 問答題</span></div>
+      <div class="q">(1) 隋文帝建設<span class="hl">義倉</span>如何使「得無饑饉」？(2) <span class="hl">均田制</span>及<span class="hl">整理戶籍</span>如何增加耕地？(3) 綜合說明隋朝為何成為繁榮富庶的朝代。</div>
+      <div class="a">
+        <span class="alabel">建議答案</span>
+        <strong>1.</strong> 各州縣設義倉儲糧，災荒時開倉賑濟。<br>
+        <strong>2.</strong> 均田制向百姓授田；整理戶籍（大索貌閱）找出隱匿戶口，增加均田戶及開墾面積。<br>
+        <strong>3.</strong> 耕地大增、農業發達；義倉儲糧充足（供國家五六十年之用）；人口增長，賦稅收入增加。
+      </div>
+    </div>
+  </div>
+
+  <!-- P.65 -->
+  <div class="unit">
+    <div class="unit-header">單元四：隋唐 — 大運河地圖 <span class="tag">P.65</span></div>
+    <div class="entry">
+      <div class="entry-header"><span class="num">6.</span><span class="src">P.65 運河地圖</span></div>
+      <div class="q">寫出隋代大運河各段名稱及其起訖點。</div>
+      <div class="a">
+        <span class="alabel">建議答案</span>
+        <table>
+          <tr class="hdr"><td>代號</td><td>運河名稱</td><td>起點</td><td>訖點</td></tr>
+          <tr class="alt1"><td>A</td><td>廣通渠</td><td>大興（長安）</td><td>潼關</td></tr>
+          <tr class="alt2"><td>B</td><td>永濟渠</td><td>板渚</td><td>涿郡（北京）</td></tr>
+          <tr class="alt1"><td>C</td><td>通濟渠</td><td>洛陽</td><td>盱眙（淮河）</td></tr>
+          <tr class="alt2"><td>D</td><td>邗溝</td><td>山陽（淮安）</td><td>江都（揚州）</td></tr>
+          <tr class="alt1"><td>E</td><td>江南河</td><td>京口（鎮江）</td><td>餘杭（杭州）</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- P.66 -->
+  <div class="unit">
+    <div class="unit-header">單元四：隋唐 — 大運河與中央集權 <span class="tag">P.66</span></div>
+    <div class="entry">
+      <div class="entry-header"><span class="num">7.</span><span class="src">P.66 問答題</span></div>
+      <div class="q">隋朝開通大運河如何有助中央控馭地方？從「有助政令傳達」及「方便運兵輸糧」兩方面分析。</div>
+      <div class="a">
+        <span class="alabel">建議答案</span>
+        <strong>有助政令傳達：</strong>大運河改善南北交通，中央政府與各地聯繫加強，可迅速傳遞政令。<br>
+        <strong>方便運兵輸糧：</strong>連繫北方邊境和江南地區，方便運兵輸糧，加強對地方和邊防的控制。
+      </div>
+    </div>
+  </div>
+
+  <!-- P.74 -->
+  <div class="unit">
+    <div class="unit-header">單元四：隋唐 — 安史之亂 <span class="tag">P.74</span></div>
+    <div class="entry">
+      <div class="entry-header"><span class="num">8.</span><span class="src">P.74 問答題 3</span></div>
+      <div class="q">根據地圖，<strong>安史之亂</strong>對哪些地區帶來較大破壞？對唐代中後期地區經濟發展有何影響？</div>
+      <div class="a">
+        <span class="alabel">建議答案</span>
+        安史之亂對<span class="hl">北方地區</span>帶來較大破壞，人口流散，經濟凋敝。<span class="hl">長江以南</span>未受戰火波及，大量百姓南下，加速南方發展，唐代中後期<span class="hl">經濟重心</span>由北方移至南方。
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    根據 2025–2026 年度中一級中國歷史科溫習範疇整理
+  </div>
+
+</div>
+
+</body>
+</html>
