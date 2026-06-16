@@ -1,7 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-  <!-- Beige background fills canvas — safe zone for maskable cropping -->
-  <rect width="512" height="512" fill="#e8e4da"/>
-  <!-- Dark navy rounded rect — important content lives well inside safe zone -->
+  <!-- Transparent canvas — OS handles masking -->
   <rect width="512" height="512" rx="80" fill="#1a1a2e"/>
   <!-- Gold 中 character -->
   <text x="256" y="240" font-family="'Noto Serif SC', 'SimSun', 'Microsoft YaHei', serif" font-size="175" font-weight="900" fill="#b8860b" text-anchor="middle" dominant-baseline="central">中</text>
