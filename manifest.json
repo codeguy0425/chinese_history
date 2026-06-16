@@ -2,20 +2,20 @@
   "name": "中一中史溫習資源",
   "short_name": "中史",
   "description": "中一級中國歷史科溫習資源 — 模擬試卷、長題目、時間軸、作業解答",
-  "start_url": "index.html?v=2",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#1a1a2e",
   "theme_color": "#1a1a2e",
   "orientation": "portrait",
   "icons": [
     {
-      "src": "icon-192.png?v=2",
+      "src": "icon-round-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icon-512.png?v=2",
+      "src": "icon-round-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
