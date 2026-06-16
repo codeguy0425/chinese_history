@@ -1,4 +1,4 @@
-const CACHE = 'zhongshi-v1';
+const CACHE = 'zhongshi-v2';
 const URLS = [
   'index.html',
   'Sample Exam Paper.html',
@@ -12,8 +12,8 @@ const URLS = [
   '2526期終考試溫習範圍.pdf',
   'study.md',
   'icon.svg',
-  'icon-192.png',
-  'icon-512.png',
+  'icon-round-192.png',
+  'icon-round-512.png',
   'manifest.json'
 ];
 
