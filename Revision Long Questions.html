@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中一中史 — 長題目溫習</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;900&family=Noto+Serif+SC:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans SC', system-ui, sans-serif;
+    background: #e8e4da;
+    color: #1a1a2e;
+    line-height: 1.8;
+    padding: 30px 16px;
+  }
+  .paper {
+    max-width: 860px;
+    margin: 0 auto;
+    background: #f8f6f0;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    padding: 40px 48px;
+  }
+  @media (max-width: 600px) { .paper { padding: 20px 14px; } }
+
+  .exam-header {
+    text-align: center;
+    border-bottom: 3px double #b8860b;
+    padding-bottom: 20px;
+    margin-bottom: 28px;
+  }
+  .exam-header h1 {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: #1a1a2e;
+  }
+  .exam-header .sub {
+    font-size: 13px;
+    color: #6b7280;
+    margin-top: 4px;
+  }
+
+  .unit {
+    margin-bottom: 40px;
+  }
+  .unit-title {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #8b6914;
+    border-left: 4px solid #b8860b;
+    padding-left: 14px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .unit-title .tag {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    background: #f0e6c8;
+    color: #8b6914;
+    padding: 2px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  .q-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.04);
+    margin-bottom: 18px;
+    overflow: hidden;
+  }
+  .q-card-header {
+    padding: 16px 20px 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    user-select: none;
+    transition: background 0.15s;
+  }
+  .q-card-header:hover { background: #faf8f4; }
+  .q-card-header .num {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-weight: 900;
+    font-size: 16px;
+    color: #b8860b;
+    min-width: 26px;
+  }
+  .q-card-header .focus {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7280;
+    background: #f0f0ec;
+    padding: 1px 10px;
+    border-radius: 3px;
+    letter-spacing: 0.3px;
+  }
+  .q-card-header .marks {
+    margin-left: auto;
+    font-size: 13px;
+    color: #9ca3af;
+    font-weight: 600;
+  }
+  .q-card-header .arrow {
+    font-size: 12px;
+    color: #9ca3af;
+    transition: transform 0.2s;
+  }
+  .q-card-header.open .arrow { transform: rotate(90deg); }
+
+  .q-body {
+    padding: 0 20px 0 56px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+  }
+  .q-body.open {
+    max-height: 800px;
+    padding: 0 20px 18px 56px;
+  }
+  .q-body .q-text {
+    font-size: 15px;
+    margin-bottom: 10px;
+    padding: 10px 14px;
+    background: #faf8f4;
+    border-radius: 6px;
+    border-left: 3px solid #d97706;
+  }
+  .q-body .a-text {
+    font-size: 14.5px;
+    color: #1b5e20;
+    background: #f1f8e9;
+    padding: 12px 16px;
+    border-radius: 6px;
+    border-left: 3px solid #2e7d32;
+    line-height: 1.9;
+  }
+  .q-body .a-text strong { color: #1a1a2e; }
+  .q-body .a-text ul { padding-left: 18px; margin-top: 4px; }
+  .q-body .a-text ul li { margin-bottom: 4px; }
+  .a-label {
+    font-weight: 700;
+    color: #2e7d32;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  @media (max-width: 500px) {
+    .q-body { padding: 0 10px 0 10px; }
+    .q-body.open { padding: 0 10px 14px 10px; }
+    .q-card-header { padding: 12px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="paper">
+
+  <div class="exam-header">
+    <h1>中一級中國歷史科<br>長題目溫習</h1>
+    <div class="sub">按溫習範疇重點編寫 · 共 14 題</div>
+  </div>
+
+  <!-- ============ 單元二：秦漢 ============ -->
+  <div class="unit">
+    <div class="unit-title">
+      單元二：秦漢 — 兩漢通西域與中外文化交流
+      <span class="tag">2 題</span>
+    </div>
+
+    <!-- 重點 1 -->
+    <div class="q-card">
+      <div class="q-card-header" onclick="toggle(this)">
+        <span class="num">1</span>
+        <span class="focus">兩漢通西域的原因</span>
+        <span class="marks">10 分</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">
+          試分析兩漢政府致力通西域的 <strong>原因</strong>。從軍事、外交、經濟三方面論述。
+        </div>
+        <div class="a-text">
+          <span class="a-label">建議答案</span>
+          <strong>（一）軍事原因：</strong>聯合西域各國夾擊匈奴，斷其右臂，解除北方邊患。
+          <br><strong>（二）外交原因：</strong>宣揚漢朝國威，與西域各國建立政治聯繫，擴大漢朝在西北的影響力。
+          <br><strong>（三）經濟原因：</strong>獲取西域的珍奇物產（如汗血馬、玉石、香料），並與西方進行貿易往來。
+        </div>
+      </div>
+    </div>
+
+    <!-- 重點 2 -->
+    <div class="q-card">
+      <div class="q-card-header" onclick="toggle(this)">
+        <span class="num">2</span>
+        <span class="focus">通西域的影響</span>
+        <span class="marks">12 分</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">
+          兩漢通西域對中國的 <strong>貿易</strong>、<strong>文化交流</strong> 及 <strong>民族往來</strong> 帶來了什麼影響？試分別說明。
+        </div>
+        <div class="a-text">
+          <span class="a-label">建議答案</span>
+          <strong>（一）貿易方面：</strong>絲綢之路開通，促進了中西方的貿易往來。中國的絲綢、茶葉、漆器、鐵器等經西域運往西方；西域的葡萄、胡桃、苜蓿、香料、寶石等傳入中國。
+          <br><strong>（二）文化交流方面：</strong>佛教經西域傳入中國，對中國的哲學、文學、藝術（如敦煌石窟）產生深遠影響。西域的音樂、舞蹈、雜技也傳入中原。
+          <br><strong>（三）民族往來方面：</strong>中原與西域各民族交往日趨頻繁，促進了民族融合。漢朝在西域設都護府，加強對西域的管理，部分西域民族逐漸漢化。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 單元三：三國、兩晉、南北朝 ============ -->
+  <div class="unit">
+    <div class="unit-title">
+      單元三：三國、兩晉、南北朝
+      <span class="tag">3 題</span>
+    </div>
+
+    <!-- 重點 3 -->
+    <div class="q-card">
+      <div class="q-card-header" onclick="toggle(this)">
+        <span class="num">3</span>
+        <span class="focus">三國鼎立與覆亡</span>
+        <span class="marks">10 分</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">
+          試論述三國鼎立局面形成的 <strong>經過</strong>，並分析三國最終 <strong>覆亡</strong> 的原因。
+        </div>
+        <div class="a-text">
+          <span class="a-label">建議答案</span>
+          <strong>（一）三國鼎立的形成：</strong>
+          <ul>
+            <li>東漢末年，黃巾之亂後群雄割據。</li>
+            <li>200 年官渡之戰，曹操擊敗袁紹，統一北方。</li>
+            <li>208 年赤壁之戰，孫劉聯軍大敗曹操，曹操退回北方。</li>
+            <li>220 年曹丕篡漢，建魏；221 年劉備稱帝，建蜀；229 年孫權稱帝，建吳。</li>
+          </ul>
+          <strong>（二）三國覆亡的原因：</strong>
+          <ul>
+            <li>魏：司馬懿發動高平陵之變，曹魏政權落入司馬氏手中；265 年司馬炎篡魏。</li>
+            <li>蜀：後主劉禪昏庸，諸葛亮死後無人支撐大局；263 年被魏所滅。</li>
+            <li>吳：末帝孫皓暴虐，國力衰退；280 年被晉所滅。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 重點 4 -->
+    <div class="q-card">
+      <div class="q-card-header" onclick="toggle(this)">
+        <span class="num">4</span>
+        <span class="focus">北方的政局</span>
+        <span class="marks">8 分</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">
+          魏晉南北朝時期，北方政局经历了怎樣的 <strong>演變</strong>？試從西晉滅亡到北魏統一北方的過程加以說明。
+        </div>
+        <div class="a-text">
+          <span class="a-label">建議答案</span>
+          <ul>
+            <li><strong>西晉短期統一：</strong>280 年晉滅吳，結束三國分裂，但統一只維持了三十多年。</li>
+            <li><strong>八王之亂：</strong>291 年起，晉室諸王內訌，國力大損。</li>
+            <li><strong>五胡亂華：</strong>304 年起，匈奴、鮮卑、羯、羌、氐等少數民族趁機南下，建立多個政權（十六國）。</li>
+            <li><strong>西晉滅亡：</strong>316 年匈奴攻陷長安，西晉滅亡，北方陷入更嚴重的分裂。</li>
+            <li><strong>北魏統一北方：</strong>439 年北魏太武帝拓跋燾滅北涼，統一北方，結束十六國混戰局面，進入北朝時期。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 重點 5 -->
+    <div class="q-card">
+      <div class="q-card-header" onclick="toggle(this)">
+        <span class="num">5</span>
+        <span class="focus">孝文帝漢化</span>
+        <span class="marks">12 分</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">
+          北魏孝文帝推行了哪些 <strong>漢化措施</strong>？這些措施帶來了什麼 <strong>影響</strong>？試從政治、文化、社會三方面分析。
+        </div>
+        <div class="a-text">
+          <span class="a-label">建議答案</span>
+          <strong>（一）漢化措施：</strong>
+          <ul>
+            <li>494 年從平城（大同）遷都洛陽。</li>
+            <li>改穿漢服，推行漢語，改用漢姓（如拓跋改元）。</li>
+            <li>獎勵與漢族通婚，推行漢族官制、禮儀。</li>
+          </ul>
+          <strong>（二）影響：</strong>
+          <ul>
+            <li><strong>政治方面：</strong>吸收漢族制度，鞏固北魏統治，向封建國家轉型；但遷都後，北方六鎮軍人不滿，埋下北魏分裂的隱患。</li>
+            <li><strong>文化方面：</strong>促進漢族與鮮卑族的文化交流，漢文化在北朝得到延續和發展。</li>
+            <li><strong>社會方面：</strong>加速民族融合，減少了民族隔閡，為隋唐大一統奠定社會基礎。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 單元四：隋唐 ============ -->
+  <div class="unit">
+    <div class="unit-title">
+      單元四：隋唐
+      <span class="tag">9 題</span>
+    </div>
+
+    <!-- 重點 6 -->
+    <div class="q-card">
+      <div class="q-card-header" onclick="toggle(this)">
+        <span class="num">6</span>
+        <span class="focus">開皇之治的措施</span>
+        <span class="marks">8 分</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">
+          隋文帝的「開皇之治」在 <strong>政治</strong>、<strong>經濟</strong>、<strong>軍事</strong> 三方面推行了哪些主要措施？
+        </div>
+        <div class="a-text">
+          <span class="a-label">建議答案</span>
+          <ul>
+            <li><strong>政治方面：</strong>改革官制（確立三省六部制），廢除九品中正制，創立科舉制的雛形（分科取士），整頓吏治，厲行節儉。</li>
+            <li><strong>經濟方面：</strong>推行均田制，減輕賦役，整頓戶籍（大索貌閱），促進農業生產，興修水利。</li>
+            <li><strong>軍事方面：</strong>改革府兵制，加強中央軍事力量，抵禦突厥入侵，鞏固邊防。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 重點 7 -->
+    <div class="q-card">
+      <div class="q-card-header" onclick="toggle(this)">
+        <span class="num">7</span>
+        <span class="focus">開皇之治的作用與影響</span>
+        <span class="marks">8 分</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">
+          開皇之治對隋朝的國家發展起到了怎樣的 <strong>作用</strong>？試加以分析。
+        </div>
+        <div class="a-text">
+          <span class="a-label">建議答案</span>
+          <ul>
+            <li><strong>奠定統一基礎：</strong>隋文帝勵精圖治，增強國力，為 589 年隋滅陳、統一南北提供了物質和軍事基礎。</li>
+            <li><strong>促進經濟恢復：</strong>均田制使農民獲得土地，減輕賦役刺激了農業生產，人口大幅增長，糧倉充實。</li>
+            <li><strong>完善國家制度：</strong>三省六部制成為後世行政制度的典範；科舉制打破了門閥壟斷，擴大了統治基礎。</li>
+            <li><strong>積累社會財富：</strong>開皇年間國家富庶，為隋煬帝時期的大規模建設（如大運河）提供了財政支持。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 重點 8 -->
+    <div class="q-card">
+      <div class="q-card-header" onclick="toggle(this)">
+        <span class="num">8</span>
+        <span class="focus">大運河的開通</span>
+        <span class="marks">8 分</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">
+          隋煬帝開鑿大運河的 <strong>背景</strong> 是什麼？大運河由哪些河段組成？試扼要說明。
+        </div>
+        <div class="a-text">
+          <span class="a-label">建議答案</span>
+          <strong>（一）背景：</strong>
+          <ul>
+            <li>經濟重心南移，江南物資需要運往北方。</li>
+            <li>加強對南方地區的控制，鞏固國家統一。</li>
+            <li>方便軍隊調動和物資運輸，應對對外用兵（如征高句麗）。</li>
+          </ul>
+          <strong>（二）河段組成（以洛陽為中心）：</strong>
+          <ul>
+            <li><strong>永濟渠：</strong>洛陽至涿郡（今北京），溝通黃河與海河流域。</li>
+            <li><strong>通濟渠：</strong>洛陽至盱眙，連接黃河與淮河。</li>
+            <li><strong>山陽瀆：</strong>淮安至揚州，連接淮河與長江。</li>
+            <li><strong>江南河：</strong>鎮江至杭州，溝通長江與錢塘江。</li>
+            <li><strong>廣通渠：</strong>長安至潼關，連接渭河與黃河。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 重點 9 -->
+    <div class="q-card">
+      <div class="q-card-header" onclick="toggle(this)">
+        <span class="num">9</span>
+        <span class="focus">大運河的經濟與政治作用</span>
+        <span class="marks">10 分</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">
+          隋代大運河在 <strong>經濟</strong> 和 <strong>政治</strong> 上分別發揮了什麼作用？對後世中國有何長遠影響？
+        </div>
+        <div class="a-text">
+          <span class="a-label">建議答案</span>
+          <strong>（一）經濟作用：</strong>
+          <ul>
+            <li>溝通了南北水路運輸，使南方的糧食和物資（如絲綢、茶葉）可以大量運往北方。</li>
+            <li>促進了沿線城市的繁榮（如揚州、杭州、洛陽成為商業中心）。</li>
+            <li>加強了南北經濟聯繫，推動了全國經濟一體化。</li>
+          </ul>
+          <strong>（二）政治作用：</strong>
+          <ul>
+            <li>加強了中央政府對南方地區的控制和管理。</li>
+            <li>方便軍隊的調動，有助於維護國家統一。</li>
+            <li>鞏固了以洛陽為中心的統治格局。</li>
+          </ul>
+          <strong>（三）長遠影響：</strong>大運河在唐宋以後持續發揮作用，成為中國南北交通的大動脈，直至今日仍在使用（京杭大運河）。
+        </div>
+      </div>
+    </div>
+
+    <!-- 重點 10 -->
+    <div class="q-card">
+      <div class="q-card-header" onclick="toggle(this)">
+        <span class="num">10</span>
+        <span class="focus">貞觀之治的治績</span>
+        <span class="marks">10 分</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">
+          唐太宗在位期間（貞觀年間）有哪些重要的 <strong>治績</strong>？試從政治、經濟、文化、軍事四方面論述。
+        </div>
+        <div class="a-text">
+          <span class="a-label">建議答案</span>
+          <ul>
+            <li><strong>政治方面：</strong>虛心納諫（以魏徵為鏡），善用賢能（房玄齡、杜如晦），完善三省六部制，精簡官僚機構，提高行政效率。</li>
+            <li><strong>經濟方面：</strong>繼續推行均田制和租庸調製，減輕賦役，鼓勵農業生產，興修水利，使百姓安居樂業。</li>
+            <li><strong>文化方面：</strong>重視教育，擴建國學，整理典籍，完善科舉制度，擴大了選才範圍。</li>
+            <li><strong>軍事方面：</strong>平定東突厥、吐谷渾等，被周邊各族尊為「天可汗」，開疆拓土，確立唐朝在東亞的霸權地位。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 重點 11 -->
+    <div class="q-card">
+      <div class="q-card-header" onclick="toggle(this)">
+        <span class="num">11</span>
+        <span class="focus">貞觀之治的影響</span>
+        <span class="marks">8 分</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">
+          試分析貞觀之治對唐朝及後世的 <strong>影響</strong>。
+        </div>
+        <div class="a-text">
+          <span class="a-label">建議答案</span>
+          <ul>
+            <li><strong>為開元盛世奠基：</strong>貞觀之治積累了豐富的國力和制度基礎，使唐玄宗時期能夠達到開元盛世的鼎盛局面。</li>
+            <li><strong>政治典範：</strong>唐太宗虛心納諫、知人善任的作風，成為後世君主學習的榜樣。</li>
+            <li><strong>制度貢獻：</strong>唐代的均田制、租庸調製、科舉制等在貞觀年間得到完善，影響了中國以後一千多年的制度發展。</li>
+            <li><strong>國際影響：</strong>唐朝國威遠播，周邊國家紛紛遣使來唐學習，長安成為國際大都會，奠定了唐朝在世界史上的重要地位。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 重點 12 -->
+    <div class="q-card">
+      <div class="q-card-header" onclick="toggle(this)">
+        <span class="num">12</span>
+        <span class="focus">安史之亂的背景與影響</span>
+        <span class="marks">12 分</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">
+          試分析安史之亂爆發的 <strong>背景</strong>，並說明這場戰亂對唐朝造成的 <strong>影響</strong>。
+        </div>
+        <div class="a-text">
+          <span class="a-label">建議答案</span>
+          <strong>（一）背景：</strong>
+          <ul>
+            <li><strong>府兵制敗壞：</strong>府兵制逐漸為募兵制取代，節度使掌握地方兵權，形成外重內輕的局面。</li>
+            <li><strong>節度使權力過大：</strong>安祿山身兼范陽、平盧、河東三鎮節度使，擁兵十五萬，尾大不掉。</li>
+            <li><strong>中央政治腐敗：</strong>唐玄宗晚年寵愛楊貴妃，重用李林甫、楊國忠等奸臣，朝政日非。</li>
+          </ul>
+          <strong>（二）影響：</strong>
+          <ul>
+            <li><strong>國力由盛轉衰：</strong>唐朝從此由盛世走向衰落，中央權威大減。</li>
+            <li><strong>藩鎮割據：</strong>唐朝無力徹底消滅叛軍，被迫承認各地節度使勢力，形成藩鎮割據的局面。</li>
+            <li><strong>經濟重心南移：</strong>北方戰亂頻繁，大量人口南遷，加速經濟重心南移。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 重點 13 -->
+    <div class="q-card">
+      <div class="q-card-header" onclick="toggle(this)">
+        <span class="num">13</span>
+        <span class="focus">唐中葉後的政局</span>
+        <span class="marks">8 分</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">
+          安史之亂平定後，唐中葉的政局出現了哪些 <strong>主要問題</strong>？
+        </div>
+        <div class="a-text">
+          <span class="a-label">建議答案</span>
+          <ul>
+            <li><strong>藩鎮割據：</strong>節度使在地方擁兵自重，不受中央節制，形成半獨立狀態，朝廷無力控制。</li>
+            <li><strong>宦官專權：</strong>宦官掌握禁軍，把持朝政，甚至掌握了皇帝的廢立（如甘露之變）。</li>
+            <li><strong>黨爭激烈：</strong>牛李黨爭持續數十年，朝臣互相攻訐，影響施政效率。</li>
+            <li><strong>財政困難：</strong>戰亂破壞了北方經濟，加上藩鎮不向中央繳納賦稅，國家財政陷入困境。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 重點 14 -->
+    <div class="q-card">
+      <div class="q-card-header" onclick="toggle(this)">
+        <span class="num">14</span>
+        <span class="focus">唐朝衰亡的原因</span>
+        <span class="marks">10 分</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">
+          綜合分析導致唐朝 <strong>衰亡</strong> 的各項原因。
+        </div>
+        <div class="a-text">
+          <span class="a-label">建議答案</span>
+          <ul>
+            <li><strong>藩鎮割據：</strong>安史之亂後藩鎮勢力坐大，中央權力不斷被削弱，朝廷政令不出關中。</li>
+            <li><strong>宦官亂政：</strong>宦官掌握神策軍（中央禁軍），把持朝政，甚至弒君廢立，嚴重破壞了正常的政治秩序。</li>
+            <li><strong>朝臣黨爭：</strong>牛李黨爭使政府內耗嚴重，無法集中力量應對國家危機。</li>
+            <li><strong>土地兼併與貧富懸殊：</strong>均田制崩壞，土地兼併嚴重，農民失去土地，生活困苦。</li>
+            <li><strong>黃巢之亂：</strong>875 年爆發黃巢起義，轉戰大半個中國，雖然最終平定，但朝廷元氣大傷，再也無力控制局面。</li>
+            <li><strong>朱溫篡唐：</strong>907 年，原黃巢部將朱溫（朱全忠）廢唐哀帝，建立後梁，唐朝正式滅亡。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:30px;padding-top:18px;border-top:2px solid #efece4;font-size:13px;color:#6b7280;">
+    根據 2025–2026 年度中一級中國歷史科溫習範疇編寫
+  </div>
+
+</div>
+
+<script>
+function toggle(header) {
+  header.classList.toggle('open');
+  const body = header.nextElementSibling;
+  body.classList.toggle('open');
+  const arrow = header.querySelector('.arrow');
+  arrow.textContent = body.classList.contains('open') ? '▼' : '▶';
+}
+</script>
+
+</body>
+</html>

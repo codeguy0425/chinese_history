@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中國歷史時間軸 — 中一級</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;900&family=Noto+Serif+SC:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans SC', system-ui, sans-serif;
+    background: #1a1a2e;
+    color: #e8e4da;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  /* Slide container */
+  .stage {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .slide {
+    position: absolute;
+    width: 92vw;
+    max-width: 1100px;
+    height: 84vh;
+    background: #f8f6f0;
+    border-radius: 16px;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.5);
+    padding: 38px 44px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: scale(0.94) translateY(12px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .slide.active {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+  }
+  @media (max-width: 600px) {
+    .slide { padding: 20px 16px; height: 88vh; width: 96vw; }
+  }
+
+  /* Slide header */
+  .slide-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    flex-shrink: 0;
+  }
+  .slide-header h2 {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: #1a1a2e;
+    letter-spacing: 2px;
+  }
+  .slide-header h2 small {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #8b6914;
+    background: #f0e6c8;
+    padding: 2px 12px;
+    border-radius: 4px;
+    margin-left: 10px;
+    letter-spacing: 0;
+    vertical-align: middle;
+  }
+  .slide-header .period {
+    font-size: 14px;
+    color: #6b7280;
+    font-weight: 500;
+  }
+  .slide-header .counter {
+    font-size: 13px;
+    color: #9ca3af;
+    font-weight: 600;
+  }
+
+  /* Mermaid area */
+  .mermaid-wrap {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .mermaid-wrap :deep(svg) {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  /* Navigation */
+  .nav {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    z-index: 10;
+    background: rgba(26,26,46,0.8);
+    backdrop-filter: blur(8px);
+    padding: 10px 20px;
+    border-radius: 40px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav button {
+    background: none;
+    border: none;
+    color: #e8e4da;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px 12px;
+    border-radius: 6px;
+    transition: background 0.15s;
+    font-family: inherit;
+    font-weight: 600;
+  }
+  .nav button:hover { background: rgba(255,255,255,0.1); }
+  .nav button:disabled { opacity: 0.3; cursor: default; }
+  .nav .dots {
+    display: flex;
+    gap: 6px;
+  }
+  .nav .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .nav .dot.active { background: #b8860b; transform: scale(1.3); }
+  .nav .dot:hover { background: rgba(255,255,255,0.5); }
+
+  /* Slide label (top-left floating) */
+  .slide-label {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.25);
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  /* Mermaid theme overrides */
+  .mermaid-wrap .label {
+    color: #1a1a2e !important;
+    font-family: 'Noto Sans SC', sans-serif !important;
+  }
+</style>
+</head>
+<body>
+
+<div class="slide-label">中國歷史時間軸</div>
+
+<div class="stage" id="stage">
+  <!-- Slide 1: 秦漢 -->
+  <div class="slide active" data-index="0">
+    <div class="slide-header">
+      <h2>秦漢 <small>秦–漢</small></h2>
+      <span class="period">221 BC – 220 AD</span>
+    </div>
+    <div class="mermaid-wrap">
+      <pre class="mermaid">
+timeline
+    title 秦漢時期（221 BC – 220 AD）
+    221 BC : 秦始皇統一六國，建立秦朝
+    209 BC : 陳勝吳廣起義
+    206 BC : 劉邦入咸陽，秦朝滅亡
+    202 BC : 劉邦稱帝，西漢建立
+    141 BC : 漢武帝即位
+    138 BC : 張騫首次出使西域
+    9 AD : 王莽篡漢，建立新朝
+    25 AD : 劉秀稱帝，東漢建立
+    184 AD : 黃巾之亂
+    220 AD : 曹丕篡漢，東漢滅亡
+      </pre>
+    </div>
+  </div>
+
+  <!-- Slide 2: 三國 -->
+  <div class="slide" data-index="1">
+    <div class="slide-header">
+      <h2>三國 <small>魏·蜀·吳</small></h2>
+      <span class="period">184 – 280</span>
+    </div>
+    <div class="mermaid-wrap">
+      <pre class="mermaid">
+timeline
+    title 三國時期（184 – 280）
+    184 : 黃巾之亂，東漢名存實亡
+    190 : 董卓之亂，群雄割據
+    200 : 官渡之戰 — 曹操大敗袁紹
+    208 : 赤壁之戰 — 孫劉聯軍敗曹操
+    220 : 曹丕篡漢，魏國建立
+    221 : 劉備稱帝，蜀國建立
+    229 : 孫權稱帝，吳國建立
+    263 : 魏滅蜀漢
+    265 : 司馬炎篡魏，西晉建立
+    280 : 晉滅孫吳，三國歸一
+      </pre>
+    </div>
+  </div>
+
+  <!-- Slide 3: 兩晉南北朝 -->
+  <div class="slide" data-index="2">
+    <div class="slide-header">
+      <h2>兩晉南北朝 <small>晉·五胡·南北朝</small></h2>
+      <span class="period">265 – 589</span>
+    </div>
+    <div class="mermaid-wrap">
+      <pre class="mermaid">
+timeline
+    title 兩晉南北朝（265 – 589）
+    265 : 司馬炎建立西晉
+    280 : 晉滅吳，統一全國
+    291 : 八王之亂爆發
+    304 : 五胡亂華，匈奴劉淵建漢
+    316 : 西晉滅亡
+    317 : 司馬睿建東晉（南渡）
+    383 : 淝水之戰 — 前秦敗於東晉
+    420 : 劉裕篡晉，南朝宋建立
+    439 : 北魏統一北方（北朝開始）
+    494 : 孝文帝遷都洛陽，推行漢化
+    581 : 楊堅篡北周，隋朝建立
+    589 : 隋滅陳，南北朝結束
+      </pre>
+    </div>
+  </div>
+
+  <!-- Slide 4: 隋朝 -->
+  <div class="slide" data-index="3">
+    <div class="slide-header">
+      <h2>隋朝 <small>隋</small></h2>
+      <span class="period">581 – 618</span>
+    </div>
+    <div class="mermaid-wrap">
+      <pre class="mermaid">
+timeline
+    title 隋朝（581 – 618）
+    581 : 楊堅篡北周，建立隋朝
+    585 : 推行均田制，整頓戶籍
+    587 : 廢九品中正，創科舉雛形
+    589 : 隋滅陳，統一南北
+    590s : 開皇之治 — 國力強盛
+    604 : 楊廣弒父即位（隋煬帝）
+    605 : 開鑿大運河（通濟渠等）
+    611 : 隋末民變爆發
+    618 : 隋朝滅亡，唐朝建立
+      </pre>
+    </div>
+  </div>
+
+  <!-- Slide 5: 唐朝 -->
+  <div class="slide" data-index="4">
+    <div class="slide-header">
+      <h2>唐朝 <small>唐</small></h2>
+      <span class="period">618 – 907</span>
+    </div>
+    <div class="mermaid-wrap">
+      <pre class="mermaid">
+timeline
+    title 唐朝（618 – 907）
+    618 : 李淵稱帝，唐朝建立
+    626 : 玄武門之變 — 李世民奪位
+    627 : 貞觀之治開始
+    649 : 唐太宗駕崩，高宗繼位
+    690 : 武則天稱帝，改國號周
+    712 : 唐玄宗即位
+    713 : 開元盛世開始
+    755 : 安史之亂爆發
+    763 : 安史之亂平定
+    875 : 黃巢之亂
+    907 : 朱溫篡唐，唐朝滅亡
+      </pre>
+    </div>
+  </div>
+</div>
+
+<div class="nav">
+  <button id="prevBtn" disabled>◀</button>
+  <div class="dots" id="dots"></div>
+  <button id="nextBtn">▶</button>
+</div>
+
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+
+await mermaid.initialize({
+  theme: 'neutral',
+  themeVariables: {
+    primaryColor: '#f0e6c8',
+    primaryBorderColor: '#b8860b',
+    lineColor: '#8b6914',
+    secondaryColor: '#e8e4da',
+    tertiaryColor: '#fff',
+    fontSize: '14px',
+    fontFamily: '"Noto Sans SC", system-ui, sans-serif'
+  }
+});
+
+// Wait for all diagrams to render
+await mermaid.run({ querySelector: '.mermaid' });
+
+let current = 0;
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+
+const dotsContainer = document.getElementById('dots');
+for (let i = 0; i < total; i++) {
+  const dot = document.createElement('div');
+  dot.className = i === 0 ? 'dot active' : 'dot';
+  dot.addEventListener('click', () => goTo(i));
+  dotsContainer.appendChild(dot);
+}
+
+function goTo(index) {
+  if (index < 0 || index >= total) return;
+  slides[current].classList.remove('active');
+  slides[index].classList.add('active');
+  current = index;
+
+  document.querySelectorAll('.dot').forEach((d, i) => {
+    d.classList.toggle('active', i === current);
+  });
+
+  document.getElementById('prevBtn').disabled = current === 0;
+  document.getElementById('nextBtn').disabled = current === total - 1;
+}
+
+document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
+document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') goTo(current - 1);
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); goTo(current + 1); }
+});
+</script>
+</body>
+</html>

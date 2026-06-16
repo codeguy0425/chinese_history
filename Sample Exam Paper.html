@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中國歷史科 中一級 期終考試 — 模擬試卷</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;900&family=Noto+Serif+SC:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --paper: #f8f6f0;
+    --paper-alt: #efece4;
+    --accent: #b8860b;
+    --accent-light: #f0e6c8;
+    --accent-dim: #8b6914;
+    --red: #c0392b;
+    --green: #2e7d32;
+    --gray: #6b7280;
+    --gray-light: #d1d5db;
+    --shadow: 0 2px 12px rgba(0,0,0,0.06);
+    --radius: 10px;
+    --font-sans: 'Noto Sans SC', system-ui, sans-serif;
+    --font-serif: 'Noto Serif SC', Georgia, serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--font-sans);
+    background: #e8e4da;
+    color: var(--ink);
+    line-height: 1.7;
+    padding: 40px 20px;
+  }
+  .paper {
+    max-width: 820px;
+    margin: 0 auto;
+    background: var(--paper);
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    padding: 50px 55px;
+    position: relative;
+  }
+  @media (max-width: 600px) {
+    .paper { padding: 28px 20px; }
+    body { padding: 16px 10px; }
+  }
+
+  /* Header */
+  .exam-header {
+    text-align: center;
+    border-bottom: 3px double var(--accent);
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+  }
+  .exam-header .school {
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--gray);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .exam-header h1 {
+    font-family: var(--font-serif);
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--ink);
+    letter-spacing: 4px;
+  }
+  .exam-header .sub {
+    font-size: 14px;
+    color: var(--gray);
+    margin-top: 4px;
+  }
+  .exam-header .meta {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    margin-top: 14px;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .exam-header .meta span { background: var(--paper-alt); padding: 3px 14px; border-radius: 4px; }
+
+  /* Section */
+  .section {
+    margin-bottom: 36px;
+  }
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent-dim);
+    border-left: 4px solid var(--accent);
+    padding-left: 14px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title .dynasty {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    background: var(--accent-light);
+    color: var(--accent-dim);
+    padding: 1px 10px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+  }
+
+  /* Questions */
+  .question {
+    margin-bottom: 28px;
+    padding: 18px 20px;
+    border-radius: var(--radius);
+    background: white;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .question.q-type-mc { border-left: 3px solid #3b82f6; }
+  .question.q-type-short { border-left: 3px solid #8b5cf6; }
+  .question.q-type-map { border-left: 3px solid #059669; }
+  .question.q-type-long { border-left: 3px solid #d97706; }
+
+  .q-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .q-number {
+    font-family: var(--font-serif);
+    font-weight: 900;
+    font-size: 17px;
+    color: var(--accent-dim);
+    min-width: 28px;
+  }
+  .q-tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 1px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+  }
+  .q-tag.t-mc { background: #dbeafe; color: #1d4ed8; }
+  .q-tag.t-short { background: #ede9fe; color: #6d28d9; }
+  .q-tag.t-map { background: #d1fae5; color: #047857; }
+  .q-tag.t-long { background: #fef3c7; color: #b45309; }
+
+  .q-score {
+    margin-left: auto;
+    font-size: 13px;
+    color: var(--gray);
+  }
+
+  .q-text {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+  .q-text p { margin-bottom: 6px; }
+  .q-text .blank { display: inline-block; width: 60px; border-bottom: 1.5px dashed var(--gray); margin: 0 4px; }
+  .q-text ul { list-style: none; padding-left: 6px; margin-top: 6px; }
+  .q-text ul li::before { content: "(" counter(li) ") "; counter-increment: li; color: var(--accent-dim); font-weight: 600; }
+  .q-text ul { counter-reset: li; }
+  .q-text ul li { margin-bottom: 3px; font-size: 14.5px; }
+
+  /* Options for MC */
+  .options {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 20px;
+  }
+  @media (max-width: 500px) { .options { grid-template-columns: 1fr; } }
+  .options li {
+    list-style: none;
+    padding: 5px 10px 5px 6px;
+    font-size: 14.5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .options li:hover { background: var(--paper-alt); }
+  .options .opt-label {
+    font-weight: 700;
+    color: var(--accent-dim);
+    min-width: 18px;
+  }
+
+  /* Answer toggle */
+  .answer-box {
+    margin-top: 12px;
+    border-top: 1px dashed var(--gray-light);
+    padding-top: 10px;
+  }
+  .answer-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--green);
+    cursor: pointer;
+    user-select: none;
+    padding: 4px 12px;
+    border-radius: 4px;
+    background: #e8f5e9;
+    transition: background 0.15s;
+    border: none;
+    font-family: inherit;
+  }
+  .answer-toggle:hover { background: #c8e6c9; }
+  .answer-toggle .arrow { transition: transform 0.2s; display: inline-block; }
+  .answer-toggle.open .arrow { transform: rotate(90deg); }
+
+  .answer-content {
+    display: none;
+    margin-top: 8px;
+    padding: 12px 16px;
+    background: #f1f8e9;
+    border-radius: 6px;
+    border-left: 3px solid var(--green);
+    font-size: 14.5px;
+    line-height: 1.8;
+    color: #1b5e20;
+  }
+  .answer-content.open { display: block; }
+  .answer-content .label {
+    font-weight: 700;
+    color: var(--green);
+    margin-right: 6px;
+  }
+  .answer-content ul { padding-left: 18px; margin-top: 4px; }
+  .answer-content ul li { margin-bottom: 2px; }
+
+  /* Instructions box */
+  .instructions {
+    background: var(--paper-alt);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin-bottom: 28px;
+    font-size: 14px;
+    color: var(--ink);
+    border: 1px solid #ddd8cc;
+  }
+  .instructions strong { color: var(--accent-dim); }
+
+  /* Footer */
+  .exam-footer {
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 2px solid var(--paper-alt);
+    font-size: 13px;
+    color: var(--gray);
+  }
+
+  /* Print */
+  @media print {
+    body { background: white; padding: 0; }
+    .paper { box-shadow: none; padding: 30px; }
+    .answer-content { display: block !important; }
+    .answer-toggle { display: none !important; }
+    .question { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="paper">
+
+  <div class="exam-header">
+    <div class="school">✦ 模擬試卷 ✦</div>
+    <h1>中國歷史科 中一級 期終考試</h1>
+    <div class="sub">根據 2025–2026 年度溫習範疇編寫</div>
+    <div class="meta">
+      <span>全卷 70 分</span>
+      <span>5 題必答</span>
+      <span>時限 1 小時 30 分鐘</span>
+    </div>
+  </div>
+
+  <div class="instructions">
+    <strong>注意事項：</strong><br>
+    一、全卷總分為七十分，共五題，所有題目必須作答。<br>
+    二、答案須清楚寫在指定位置。<br>
+    三、挑戰題可選擇作答，答對可獲加分。<br>
+    四、點擊「顯示答案」按鈕可參考建議答案。
+  </div>
+
+  <!-- ============ 單元二 ============ -->
+  <div class="section">
+    <div class="section-title">
+      單元二：秦漢
+      <span class="dynasty">兩漢通西域</span>
+    </div>
+
+    <!-- Q1 MC -->
+    <div class="question q-type-mc">
+      <div class="q-header">
+        <span class="q-number">1.</span>
+        <span class="q-tag t-mc">選擇題</span>
+        <span class="q-score">[4 分]</span>
+      </div>
+      <div class="q-text">
+        <p>漢武帝派遣誰出使西域，以聯絡大月氏夾擊匈奴？</p>
+        <ul class="options">
+          <li><span class="opt-label">A.</span>班超</li>
+          <li><span class="opt-label">B.</span>張騫</li>
+          <li><span class="opt-label">C.</span>班固</li>
+          <li><span class="opt-label">D.</span>蘇武</li>
+        </ul>
+      </div>
+      <div class="answer-box">
+        <button class="answer-toggle" onclick="toggleAnswer(this)">
+          <span class="arrow">▶</span> 顯示答案
+        </button>
+        <div class="answer-content">
+          <span class="label">答案：</span> B. 張騫<br>
+          <span class="label">解說：</span> 張騫於公元前 138 年及公元前 119 年兩次出使西域，是漢代通西域的關鍵人物。
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 MC -->
+    <div class="question q-type-mc">
+      <div class="q-header">
+        <span class="q-number">2.</span>
+        <span class="q-tag t-mc">選擇題</span>
+        <span class="q-score">[4 分]</span>
+      </div>
+      <div class="q-text">
+        <p>以下哪項 <strong>不是</strong> 兩漢通西域帶來的影響？</p>
+        <ul class="options">
+          <li><span class="opt-label">A.</span>絲綢之路的開通促進了中西貿易</li>
+          <li><span class="opt-label">B.</span>佛教經西域傳入中國</li>
+          <li><span class="opt-label">C.</span>漢朝與羅馬帝國建立正式外交關係</li>
+          <li><span class="opt-label">D.</span>中原的絲綢、鐵器等傳入西方</li>
+        </ul>
+      </div>
+      <div class="answer-box">
+        <button class="answer-toggle" onclick="toggleAnswer(this)">
+          <span class="arrow">▶</span> 顯示答案
+        </button>
+        <div class="answer-content">
+          <span class="label">答案：</span> C. 漢朝與羅馬帝國建立正式外交關係<br>
+          <span class="label">解說：</span> 兩漢雖與西域有往來，但並未與羅馬帝國建立正式外交關係。A、B、D 均為通西域的實際影響。
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 Short -->
+    <div class="question q-type-short">
+      <div class="q-header">
+        <span class="q-number">3.</span>
+        <span class="q-tag t-short">短答題</span>
+        <span class="q-score">[6 分]</span>
+      </div>
+      <div class="q-text">
+        <p>試簡述兩漢通西域的 <strong>兩個</strong> 主要原因。</p>
+      </div>
+      <div class="answer-box">
+        <button class="answer-toggle" onclick="toggleAnswer(this)">
+          <span class="arrow">▶</span> 顯示答案
+        </button>
+        <div class="answer-content">
+          <span class="label">建議答案：</span><br>
+          <ul>
+            <li><strong>軍事原因：</strong> 聯絡西域各國，夾擊匈奴，解除北方邊患。</li>
+            <li><strong>外交原因：</strong> 宣揚國威，與西域各國建立聯繫，拓展漢朝的政治影響力。</li>
+          </ul>
+          <span style="display:block;margin-top:4px;">（其他合理答案如「經濟原因：獲取西域物產」亦可接受）</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 單元三 ============ -->
+  <div class="section">
+    <div class="section-title">
+      單元三：三國、兩晉、南北朝
+      <span class="dynasty">分裂與開發</span>
+    </div>
+
+    <!-- Q4 Map -->
+    <div class="question q-type-map">
+      <div class="q-header">
+        <span class="q-number">4.</span>
+        <span class="q-tag t-map">地圖題</span>
+        <span class="q-score">[6 分]</span>
+      </div>
+      <div class="q-text">
+        <p>根據三國鼎立的形勢，寫出下列三國的國都所在地：</p>
+        <ul>
+          <li>魏 —— 都城：<span class="blank"></span></li>
+          <li>蜀 —— 都城：<span class="blank"></span></li>
+          <li>吳 —— 都城：<span class="blank"></span></li>
+        </ul>
+      </div>
+      <div class="answer-box">
+        <button class="answer-toggle" onclick="toggleAnswer(this)">
+          <span class="arrow">▶</span> 顯示答案
+        </button>
+        <div class="answer-content">
+          <span class="label">答案：</span><br>
+          <ul>
+            <li>魏 —— 洛陽</li>
+            <li>蜀 —— 成都</li>
+            <li>吳 —— 建業（今南京）</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q5 Map -->
+    <div class="question q-type-map">
+      <div class="q-header">
+        <span class="q-number">5.</span>
+        <span class="q-tag t-map">地圖題</span>
+        <span class="q-score">[5 分]</span>
+      </div>
+      <div class="q-text">
+        <p>「五胡內徙」中的「五胡」是指哪五個少數民族？試列舉其中 <strong>三個</strong>。</p>
+      </div>
+      <div class="answer-box">
+        <button class="answer-toggle" onclick="toggleAnswer(this)">
+          <span class="arrow">▶</span> 顯示答案
+        </button>
+        <div class="answer-content">
+          <span class="label">答案：</span> 五胡包括：匈奴、鮮卑、羯、羌、氐（列出其中三個即可）<br>
+          <span class="label">記憶口訣：</span> 匈奴、鮮卑、羯、羌、氐 — 「兇（匈）嫌（鮮）揭（羯）槍（羌）底（氐）」
+        </div>
+      </div>
+    </div>
+
+    <!-- Q6 Short -->
+    <div class="question q-type-short">
+      <div class="q-header">
+        <span class="q-number">6.</span>
+        <span class="q-tag t-short">短答題</span>
+        <span class="q-score">[8 分]</span>
+      </div>
+      <div class="q-text">
+        <p>北魏孝文帝推行漢化措施，對北方社會帶來了什麼 <strong>影響</strong>？試從 <strong>兩個</strong> 方面說明。</p>
+      </div>
+      <div class="answer-box">
+        <button class="answer-toggle" onclick="toggleAnswer(this)">
+          <span class="arrow">▶</span> 顯示答案
+        </button>
+        <div class="answer-content">
+          <span class="label">建議答案：</span><br>
+          <ul>
+            <li><strong>民族融合方面：</strong> 促進北方各民族與漢族的文化交流，加速民族融合，減少民族隔閡。</li>
+            <li><strong>政治發展方面：</strong> 遷都洛陽後，吸收漢族政治制度，推行均田制、三長制等，強化了北魏的統治基礎，推動北魏由部落政權轉向封建國家。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 單元四 ============ -->
+  <div class="section">
+    <div class="section-title">
+      單元四：隋唐
+      <span class="dynasty">統一與盛世</span>
+    </div>
+
+    <!-- Q7 MC -->
+    <div class="question q-type-mc">
+      <div class="q-header">
+        <span class="q-number">7.</span>
+        <span class="q-tag t-mc">選擇題</span>
+        <span class="q-score">[4 分]</span>
+      </div>
+      <div class="q-text">
+        <p>隋代大運河以哪個城市為中心？</p>
+        <ul class="options">
+          <li><span class="opt-label">A.</span>長安</li>
+          <li><span class="opt-label">B.</span>洛陽</li>
+          <li><span class="opt-label">C.</span>建康</li>
+          <li><span class="opt-label">D.</span>開封</li>
+        </ul>
+      </div>
+      <div class="answer-box">
+        <button class="answer-toggle" onclick="toggleAnswer(this)">
+          <span class="arrow">▶</span> 顯示答案
+        </button>
+        <div class="answer-content">
+          <span class="label">答案：</span> B. 洛陽<br>
+          <span class="label">解說：</span> 隋煬帝以洛陽為中心，開鑿大運河連接南北，全長約二千多公里。
+        </div>
+      </div>
+    </div>
+
+    <!-- Q8 Short -->
+    <div class="question q-type-short">
+      <div class="q-header">
+        <span class="q-number">8.</span>
+        <span class="q-tag t-short">短答題</span>
+        <span class="q-score">[6 分]</span>
+      </div>
+      <div class="q-text">
+        <p>隋代大運河的開通有甚麼 <strong>經濟</strong> 及 <strong>政治</strong> 作用？</p>
+      </div>
+      <div class="answer-box">
+        <button class="answer-toggle" onclick="toggleAnswer(this)">
+          <span class="arrow">▶</span> 顯示答案
+        </button>
+        <div class="answer-content">
+          <span class="label">建議答案：</span><br>
+          <ul>
+            <li><strong>經濟作用：</strong> 溝通南北水路運輸，促進南北物資交流（如南糧北運），帶動沿線城市經濟發展。</li>
+            <li><strong>政治作用：</strong> 加強中央政府對南方地區的控制，鞏固國家統一；方便軍隊調動，維護統治。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q9 MC -->
+    <div class="question q-type-mc">
+      <div class="q-header">
+        <span class="q-number">9.</span>
+        <span class="q-tag t-mc">選擇題</span>
+        <span class="q-score">[4 分]</span>
+      </div>
+      <div class="q-text">
+        <p>唐太宗在位期間，政治清明，社會安定，史稱甚麼？</p>
+        <ul class="options">
+          <li><span class="opt-label">A.</span>開皇之治</li>
+          <li><span class="opt-label">B.</span>貞觀之治</li>
+          <li><span class="opt-label">C.</span>開元之治</li>
+          <li><span class="opt-label">D.</span>永徽之治</li>
+        </ul>
+      </div>
+      <div class="answer-box">
+        <button class="answer-toggle" onclick="toggleAnswer(this)">
+          <span class="arrow">▶</span> 顯示答案
+        </button>
+        <div class="answer-content">
+          <span class="label">答案：</span> B. 貞觀之治<br>
+          <span class="label">解說：</span> 唐太宗李世民在位期間（627–649 年），政治開明，虛心納諫，史稱「貞觀之治」。開皇之治為隋文帝時期。
+        </div>
+      </div>
+    </div>
+
+    <!-- Q10 Long -->
+    <div class="question q-type-long">
+      <div class="q-header">
+        <span class="q-number">10.</span>
+        <span class="q-tag t-long">問答題</span>
+        <span class="q-score">[12 分]</span>
+      </div>
+      <div class="q-text">
+        <p>試分析 <strong>安史之亂</strong> 的背景及其對唐朝的影響。</p>
+      </div>
+      <div class="answer-box">
+        <button class="answer-toggle" onclick="toggleAnswer(this)">
+          <span class="arrow">▶</span> 顯示答案
+        </button>
+        <div class="answer-content">
+          <span class="label">建議答案：</span><br>
+          <p><strong>背景：</strong></p>
+          <ul>
+            <li><strong>府兵制敗壞：</strong> 府兵制逐漸為募兵制取代，節度使掌握地方兵權，形成外重內輕的局面。</li>
+            <li><strong>節度使權力過大：</strong> 安祿山身兼范陽、平盧、河東三鎮節度使，擁兵自重。</li>
+            <li><strong>中央政治腐敗：</strong> 唐玄宗晚年寵愛楊貴妃，重用李林甫、楊國忠等奸臣，朝政敗壞。</li>
+          </ul>
+          <p><strong>影響：</strong></p>
+          <ul>
+            <li><strong>國力由盛轉衰：</strong> 唐朝從此由盛世走向衰落，中央權威大減。</li>
+            <li><strong>藩鎮割據：</strong> 唐朝無力徹底消滅叛軍，被迫承認各地節度使勢力，形成藩鎮割據的局面。</li>
+            <li><strong>經濟重心南移：</strong> 北方戰亂頻繁，大量人口南遷，加速經濟重心南移。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 挑戰題 ============ -->
+  <div class="section">
+    <div class="section-title">
+      挑戰題 <span style="font-size:13px;font-weight:400;color:var(--gray);">（加分題，自由作答）</span>
+    </div>
+
+    <div class="question q-type-long">
+      <div class="q-header">
+        <span class="q-number">✦</span>
+        <span class="q-tag t-long">挑戰題</span>
+        <span class="q-score">[加分 7 分]</span>
+      </div>
+      <div class="q-text">
+        <p>隋文帝的「開皇之治」與唐太宗的「貞觀之治」皆為著名的治世。試比較兩者在 <strong>施政措施</strong> 上的異同。</p>
+      </div>
+      <div class="answer-box">
+        <button class="answer-toggle" onclick="toggleAnswer(this)">
+          <span class="arrow">▶</span> 顯示答案
+        </button>
+        <div class="answer-content">
+          <span class="label">建議答案：</span><br>
+          <p><strong>相同之處：</strong></p>
+          <ul>
+            <li>兩者均重視農業，推行均田制，減輕賦役，促進經濟發展。</li>
+            <li>兩者均提倡節儉，反對奢靡之風。</li>
+            <li>兩者均注意整頓吏治，選用賢能之士。</li>
+          </ul>
+          <p><strong>相異之處：</strong></p>
+          <ul>
+            <li>隋文帝厲行節儉，對官員考核嚴苛；唐太宗更注重納諫，以魏徵為鏡，政治風氣更為開放。</li>
+            <li>隋文帝推行科舉制的雛形（分科取士）；唐太宗進一步完善科舉制度，擴大了選才範圍。</li>
+            <li>隋朝二世而亡，治世較短；唐朝貞觀之治影響深遠，為開元盛世奠定基礎。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exam-footer">
+    — 試卷完 —<br>
+    <span style="font-size:12px;">本試卷僅供溫習參考，並非官方考試試卷</span>
+  </div>
+
+</div>
+
+<script>
+function toggleAnswer(btn) {
+  btn.classList.toggle('open');
+  var content = btn.nextElementSibling;
+  if (content && content.classList.contains('answer-content')) {
+    content.classList.toggle('open');
+    btn.innerHTML = content.classList.contains('open')
+      ? '<span class="arrow">▶</span> 隱藏答案'
+      : '<span class="arrow">▶</span> 顯示答案';
+  }
+}
+</script>
+
+</body>
+</html>

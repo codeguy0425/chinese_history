@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中國歷史時間軸 — Mermaid Max</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;900&family=Noto+Serif+SC:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans SC', system-ui, sans-serif;
+    background: #1a1a2e;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s;
+  }
+  .slide.active { opacity: 1; pointer-events: auto; }
+
+  /* Minimal header */
+  .hd {
+    flex-shrink: 0;
+    padding: 16px 40px 0;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  .hd h2 {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    font-size: 24px;
+    font-weight: 900;
+    color: #e8e4da;
+    letter-spacing: 1px;
+  }
+  .hd h2 small {
+    font-size: 12px;
+    font-weight: 500;
+    color: #b8860b;
+    background: rgba(184,134,11,0.15);
+    padding: 1px 10px;
+    border-radius: 4px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  .hd .period {
+    margin-left: auto;
+    font-size: 13px;
+    color: rgba(232,228,218,0.35);
+    font-weight: 500;
+  }
+
+  /* Mermaid fills remaining space */
+  .mermaid-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px 10px;
+    min-height: 0;
+  }
+  .mermaid-wrap svg {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 100%;
+  }
+
+  /* Nav */
+  .nav {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    z-index: 20;
+    background: rgba(26,26,46,0.85);
+    backdrop-filter: blur(8px);
+    padding: 8px 18px;
+    border-radius: 40px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav button {
+    background: none;
+    border: none;
+    color: #e8e4da;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 3px 12px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-weight: 600;
+    transition: background 0.15s;
+  }
+  .nav button:hover { background: rgba(255,255,255,0.1); }
+  .nav button:disabled { opacity: 0.25; cursor: default; }
+  .nav .dots { display: flex; gap: 5px; }
+  .nav .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .nav .dot.active { background: #b8860b; transform: scale(1.35); }
+</style>
+</head>
+<body>
+
+<div class="stage" id="stage">
+  <div class="slide active">
+    <div class="hd"><h2>秦漢 <small>秦–漢</small><span class="period">221 BC – 220 AD</span></h2></div>
+    <div class="mermaid-wrap">
+      <pre class="mermaid">
+%%{init: {'timeline': {'pointInterval': 180, 'pointWidth': 16, 'scaleFactor': 2, 'width': 2000}}}%%
+timeline
+    title 秦漢時期（221 BC – 220 AD）
+    221 BC : 秦始皇統一六國，建立秦朝
+    209 BC : 陳勝吳廣起義
+    206 BC : 劉邦入咸陽，秦朝滅亡
+    202 BC : 劉邦稱帝，西漢建立
+    141 BC : 漢武帝即位
+    138 BC : 張騫首次出使西域
+    9 AD : 王莽篡漢，建立新朝
+    25 AD : 劉秀稱帝，東漢建立
+    184 AD : 黃巾之亂
+    220 AD : 曹丕篡漢，東漢滅亡
+      </pre>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="hd"><h2>三國 <small>魏·蜀·吳</small><span class="period">184 – 280</span></h2></div>
+    <div class="mermaid-wrap">
+      <pre class="mermaid">
+%%{init: {'timeline': {'pointInterval': 180, 'pointWidth': 16, 'scaleFactor': 2, 'width': 2000}}}%%
+timeline
+    title 三國時期（184 – 280）
+    184 : 黃巾之亂，東漢名存實亡
+    200 : 官渡之戰 — 曹操大敗袁紹
+    208 : 赤壁之戰 — 孫劉聯軍敗曹操
+    220 : 曹丕篡漢，魏國建立
+    221 : 劉備稱帝，蜀國建立
+    229 : 孫權稱帝，吳國建立
+    263 : 魏滅蜀漢
+    265 : 司馬炎篡魏，西晉建立
+    280 : 晉滅孫吳，三國歸一
+      </pre>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="hd"><h2>兩晉南北朝 <small>晉·五胡·南北朝</small><span class="period">265 – 589</span></h2></div>
+    <div class="mermaid-wrap">
+      <pre class="mermaid">
+%%{init: {'timeline': {'pointInterval': 150, 'pointWidth': 14, 'scaleFactor': 2, 'width': 2200}}}%%
+timeline
+    title 兩晉南北朝（265 – 589）
+    265 : 司馬炎建立西晉
+    280 : 晉滅吳，統一全國
+    291 : 八王之亂爆發
+    304 : 五胡亂華
+    316 : 西晉滅亡
+    317 : 司馬睿建東晉
+    383 : 淝水之戰
+    420 : 南朝宋建立
+    439 : 北魏統一北方
+    494 : 孝文帝遷都洛陽
+    581 : 隋朝建立
+    589 : 南北朝結束
+      </pre>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="hd"><h2>隋朝 <small>隋</small><span class="period">581 – 618</span></h2></div>
+    <div class="mermaid-wrap">
+      <pre class="mermaid">
+%%{init: {'timeline': {'pointInterval': 160, 'pointWidth': 16, 'scaleFactor': 2, 'width': 1800}}}%%
+timeline
+    title 隋朝（581 – 618）
+    581 : 楊堅篡北周，建立隋朝
+    585 : 推行均田制，整頓戶籍
+    589 : 隋滅陳，統一南北
+    590s : 開皇之治 — 國力強盛
+    604 : 楊廣弒父即位（隋煬帝）
+    605 : 開鑿大運河（通濟渠等）
+    611 : 隋末民變爆發
+    618 : 隋朝滅亡，唐朝建立
+      </pre>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="hd"><h2>唐朝 <small>唐</small><span class="period">618 – 907</span></h2></div>
+    <div class="mermaid-wrap">
+      <pre class="mermaid">
+%%{init: {'timeline': {'pointInterval': 150, 'pointWidth': 14, 'scaleFactor': 2, 'width': 2200}}}%%
+timeline
+    title 唐朝（618 – 907）
+    618 : 李淵稱帝，唐朝建立
+    626 : 玄武門之變
+    627 : 貞觀之治開始
+    690 : 武則天稱帝
+    712 : 唐玄宗即位
+    713 : 開元盛世開始
+    755 : 安史之亂爆發
+    763 : 安史之亂平定
+    875 : 黃巢之亂
+    907 : 朱溫篡唐，唐朝滅亡
+      </pre>
+    </div>
+  </div>
+</div>
+
+<div class="nav">
+  <button id="prevBtn" disabled>◀</button>
+  <div class="dots" id="dots"></div>
+  <button id="nextBtn">▶</button>
+</div>
+
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+
+await mermaid.initialize({
+  theme: 'neutral',
+  themeVariables: {
+    primaryColor: '#f0e6c8',
+    primaryBorderColor: '#b8860b',
+    lineColor: '#8b6914',
+    secondaryColor: '#e8e4da',
+    tertiaryColor: '#fff',
+    fontSize: '20px',
+    fontFamily: '"Noto Sans SC", system-ui, sans-serif'
+  }
+});
+
+await mermaid.run({ querySelector: '.mermaid' });
+
+let current = 0;
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+const dotsContainer = document.getElementById('dots');
+
+for (let i = 0; i < total; i++) {
+  const dot = document.createElement('div');
+  dot.className = i === 0 ? 'dot active' : 'dot';
+  dot.addEventListener('click', () => goTo(i));
+  dotsContainer.appendChild(dot);
+}
+
+function goTo(index) {
+  if (index < 0 || index >= total) return;
+  slides[current].classList.remove('active');
+  slides[index].classList.add('active');
+  current = index;
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  document.getElementById('prevBtn').disabled = current === 0;
+  document.getElementById('nextBtn').disabled = current === total - 1;
+}
+
+document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
+document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') goTo(current - 1);
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); goTo(current + 1); }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中國歷史時間軸 — TimelineJS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans SC', system-ui, sans-serif;
+    background: #1a1a2e;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+  #timeline-embed {
+    width: 100vw;
+    height: 100vh;
+  }
+  /* Override TimelineJS fonts */
+  .tl-timeline { font-family: 'Noto Sans SC', sans-serif !important; }
+  .tl-headline-date, .tl-headline, .tl-text-content { font-family: 'Noto Sans SC', sans-serif !important; }
+</style>
+</head>
+<body>
+<div id="timeline-embed"></div>
+
+<script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+<script>
+const data = {
+  "title": {
+    "text": {
+      "headline": "中國歷史時間軸",
+      "text": "<p>中一級 | 2025–2026 年度溫習範疇</p>"
+    }
+  },
+  "events": [
+    {
+      "start_date": { "year": "-221" },
+      "text": {
+        "headline": "秦始皇統一六國",
+        "text": "秦王嬴政滅六國，建立中國第一個中央集權帝國 — 秦朝。"
+      },
+      "group": "秦漢"
+    },
+    {
+      "start_date": { "year": "-209" },
+      "text": {
+        "headline": "陳勝吳廣起義",
+        "text": "大澤鄉起義，揭開秦末農民戰爭序幕。"
+      },
+      "group": "秦漢"
+    },
+    {
+      "start_date": { "year": "-202" },
+      "text": {
+        "headline": "西漢建立",
+        "text": "劉邦擊敗項羽，建立漢朝，定都長安。"
+      },
+      "group": "秦漢"
+    },
+    {
+      "start_date": { "year": "-141" },
+      "text": {
+        "headline": "漢武帝即位",
+        "text": "漢武帝在位期間，西漢國力達至頂峰。"
+      },
+      "group": "秦漢"
+    },
+    {
+      "start_date": { "year": "-138" },
+      "text": {
+        "headline": "張騫出使西域",
+        "text": "張騫受漢武帝派遣，出使西域，開通絲綢之路。"
+      },
+      "group": "秦漢"
+    },
+    {
+      "start_date": { "year": "9" },
+      "text": {
+        "headline": "王莽篡漢",
+        "text": "王莽廢西漢末帝，建立新朝，推行改制。"
+      },
+      "group": "秦漢"
+    },
+    {
+      "start_date": { "year": "25" },
+      "text": {
+        "headline": "東漢建立",
+        "text": "劉秀（光武帝）恢復漢室，定都洛陽。"
+      },
+      "group": "秦漢"
+    },
+    {
+      "start_date": { "year": "184" },
+      "text": {
+        "headline": "黃巾之亂",
+        "text": "張角領導黃巾起義，東漢名存實亡。"
+      },
+      "group": "秦漢"
+    },
+    {
+      "start_date": { "year": "220" },
+      "text": {
+        "headline": "東漢滅亡",
+        "text": "曹丕篡漢，東漢正式滅亡，進入三國時代。"
+      },
+      "group": "秦漢"
+    },
+    {
+      "start_date": { "year": "200" },
+      "text": {
+        "headline": "官渡之戰",
+        "text": "曹操在官渡大敗袁紹，奠定統一北方的基礎。"
+      },
+      "group": "三國"
+    },
+    {
+      "start_date": { "year": "208" },
+      "text": {
+        "headline": "赤壁之戰",
+        "text": "孫權、劉備聯軍在赤壁擊敗曹操，奠定三國鼎立局面。"
+      },
+      "group": "三國"
+    },
+    {
+      "start_date": { "year": "220" },
+      "text": {
+        "headline": "魏國建立",
+        "text": "曹丕逼漢獻帝禪讓，建立曹魏。"
+      },
+      "group": "三國"
+    },
+    {
+      "start_date": { "year": "221" },
+      "text": {
+        "headline": "蜀國建立",
+        "text": "劉備在成都稱帝，國號漢（史稱蜀漢）。"
+      },
+      "group": "三國"
+    },
+    {
+      "start_date": { "year": "229" },
+      "text": {
+        "headline": "吳國建立",
+        "text": "孫權在建業稱帝，建立東吳。"
+      },
+      "group": "三國"
+    },
+    {
+      "start_date": { "year": "280" },
+      "text": {
+        "headline": "三國歸一",
+        "text": "西晉滅東吳，三國時代結束。"
+      },
+      "group": "三國"
+    },
+    {
+      "start_date": { "year": "265" },
+      "text": {
+        "headline": "西晉建立",
+        "text": "司馬炎篡魏，建立晉朝。"
+      },
+      "group": "兩晉南北朝"
+    },
+    {
+      "start_date": { "year": "291" },
+      "text": {
+        "headline": "八王之亂",
+        "text": "晉室諸王爭權，引發長達十六年的內亂。"
+      },
+      "group": "兩晉南北朝"
+    },
+    {
+      "start_date": { "year": "304" },
+      "text": {
+        "headline": "五胡亂華",
+        "text": "匈奴、鮮卑、羯、羌、氐等少數民族相繼建立政權。"
+      },
+      "group": "兩晉南北朝"
+    },
+    {
+      "start_date": { "year": "316" },
+      "text": {
+        "headline": "西晉滅亡",
+        "text": "匈奴劉曜攻陷長安，西晉結束。"
+      },
+      "group": "兩晉南北朝"
+    },
+    {
+      "start_date": { "year": "317" },
+      "text": {
+        "headline": "東晉建立",
+        "text": "司馬睿在建康（南京）重建晉朝，史稱東晉。"
+      },
+      "group": "兩晉南北朝"
+    },
+    {
+      "start_date": { "year": "383" },
+      "text": {
+        "headline": "淝水之戰",
+        "text": "東晉謝玄率軍擊敗前秦苻堅，保住了南方政權。"
+      },
+      "group": "兩晉南北朝"
+    },
+    {
+      "start_date": { "year": "420" },
+      "text": {
+        "headline": "南北朝開始",
+        "text": "劉裕篡晉，建立南朝宋，南北朝對峙局面形成。"
+      },
+      "group": "兩晉南北朝"
+    },
+    {
+      "start_date": { "year": "494" },
+      "text": {
+        "headline": "孝文帝遷都洛陽",
+        "text": "北魏孝文帝推行漢化改革，遷都洛陽，促進民族融合。"
+      },
+      "group": "兩晉南北朝"
+    },
+    {
+      "start_date": { "year": "581" },
+      "text": {
+        "headline": "隋朝建立",
+        "text": "楊堅篡北周，建立隋朝。"
+      },
+      "group": "兩晉南北朝"
+    },
+    {
+      "start_date": { "year": "589" },
+      "text": {
+        "headline": "隋滅陳，統一南北",
+        "text": "隋文帝楊堅滅陳朝，結束南北朝分裂局面。"
+      },
+      "group": "兩晉南北朝"
+    },
+    {
+      "start_date": { "year": "581" },
+      "text": {
+        "headline": "隋朝建立",
+        "text": "楊堅篡北周，建立隋朝，定都長安。"
+      },
+      "group": "隋朝"
+    },
+    {
+      "start_date": { "year": "585" },
+      "text": {
+        "headline": "推行均田制",
+        "text": "隋文帝頒行均田制，整頓戶籍，促進農業發展。"
+      },
+      "group": "隋朝"
+    },
+    {
+      "start_date": { "year": "589" },
+      "text": {
+        "headline": "統一南北",
+        "text": "隋滅南陳，結束近三百年分裂局面。"
+      },
+      "group": "隋朝"
+    },
+    {
+      "start_date": { "year": "604" },
+      "text": {
+        "headline": "隋煬帝即位",
+        "text": "楊廣弒父繼位，改元大業。"
+      },
+      "group": "隋朝"
+    },
+    {
+      "start_date": { "year": "605" },
+      "text": {
+        "headline": "開鑿大運河",
+        "text": "隋煬帝下令開鑿以洛陽為中心的大運河，連接南北。"
+      },
+      "group": "隋朝"
+    },
+    {
+      "start_date": { "year": "618" },
+      "text": {
+        "headline": "隋朝滅亡",
+        "text": "隋末民變四起，宇文化及弒煬帝，李淵建立唐朝。"
+      },
+      "group": "隋朝"
+    },
+    {
+      "start_date": { "year": "618" },
+      "text": {
+        "headline": "唐朝建立",
+        "text": "李淵在長安稱帝，建立唐朝。"
+      },
+      "group": "唐朝"
+    },
+    {
+      "start_date": { "year": "626" },
+      "text": {
+        "headline": "玄武門之變",
+        "text": "李世民發動玄武門之變，殺太子建成，奪取皇位。"
+      },
+      "group": "唐朝"
+    },
+    {
+      "start_date": { "year": "627" },
+      "text": {
+        "headline": "貞觀之治",
+        "text": "唐太宗李世民在位期間，政治清明，史稱「貞觀之治」。"
+      },
+      "group": "唐朝"
+    },
+    {
+      "start_date": { "year": "690" },
+      "text": {
+        "headline": "武則天稱帝",
+        "text": "武則天改唐為周，成為中國歷史上唯一的女皇帝。"
+      },
+      "group": "唐朝"
+    },
+    {
+      "start_date": { "year": "713" },
+      "text": {
+        "headline": "開元盛世",
+        "text": "唐玄宗在位前期，國力鼎盛，史稱「開元盛世」。"
+      },
+      "group": "唐朝"
+    },
+    {
+      "start_date": { "year": "755" },
+      "text": {
+        "headline": "安史之亂爆發",
+        "text": "安祿山在范陽起兵叛亂，唐朝由盛轉衰。"
+      },
+      "group": "唐朝"
+    },
+    {
+      "start_date": { "year": "907" },
+      "text": {
+        "headline": "唐朝滅亡",
+        "text": "朱溫篡唐，建立後梁，唐朝滅亡。"
+      },
+      "group": "唐朝"
+    }
+  ]
+};
+
+window.timeline = new TL.Timeline('timeline-embed', data, {
+  timenav_position: 'bottom',
+  scale_factor: 2,
+  initial_zoom: 1,
+  hash_bookmark: false
+});
+</script>
+</body>
+</html>
